@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- <title>YOUR NAME</title> -->
+  <title>Mukilan </title>
+</head>
+  <body>
+    <nav class="bg-transparent">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <div class="hidden sm:block sm:ml-6">
+              <div class="flex space-x-4">
+                <a href="#about" class="color-secondary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <span class="text-green-400">01.</span>
+                  About
+                </a>
+                <a href="#experience" class="color-secondary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <span class="text-green-400">02.</span>
+                  Experience
+                </a>
+                <a href="#work" class="color-secondary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <span class="text-green-400">03.</span>
+                  Work
+                </a>
+                <a href="#contact" class="color-secondary hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <span class="text-green-400">04.</span>
+                  Contact
+                </a>
+              </div>
+            </div>
+            <div class="block sm:hidden">
+              <a href="#home" class="px-3 py-2 rounded-md text-sm font-bold">
+                Home
+              </a>
+            </div>
+          </div>
+          <div class="absolute right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <!-- YOUR RESUME LINK HERE -->
+            <a target="_blank" href="https://github.com/miguelcdpmarques/developer-portfolio-template/blob/main/MiguelMarques_resume.pdf" class="w-full flex items-center justify-center text-sm px-4 py-2 border border-green-400 text-green-400 font-medium rounded-md text-white bg-transparent hover:bg-gray-800">
+              My Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="lg:relative">
+      <section id="home" class="container mx-auto max-w-7xl w-4/5 pt-8 pb-10 lg:py-24 lg:text-left">
+        <div class="px-4 sm:px-8 xl:pr-16">
+          <p class="text-green-400 py-4">Hi, my name is</p>
+          <h1 class="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl lg:text-5xl">
+            <span class="block py-2">
+              <!-- YOUR NAME -->
+              Karmukilan V 
+            </span>
+            
+            <span class="block color-secondary py-2">
+              <!-- WHAT YOU DO -->
+              I help companies make sense out of their data and help them make better decisions.
+            </span>
+          </h1>
+          <p class="py-4 text-sm text-gray-400 sm:text-xl md:mt-2 md:max-w-3xl">
+            <!-- YOUR BIO-->
+            I'm a AI/ML engineer , Data analyst and UI/UX designer by passion . I'm passionate about building products that solve real problems.
+          </p>
+          <div class="py-4">
+            <!-- YOUR SOCIAL PROFILES -->
+            <a target="_blank" class="pr-4 hover:text-white" href="mailto:kvmuklan@gmail.com">
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+            <a target="_blank" class="pr-4 hover:text-white" href="https://www.linkedin.com/in/karmukilanv/">
+              <i class="fab fa-linkedin fa-lg"></i>
+            </a>
+            <a target="_blank" class="pr-4 hover:text-white" href="https://github.com/kvmukilan">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a target="_blank" class="pr-4 hover:text-white" href="https://stackoverflow.com/users/22142911/mukilan">
+              <i class="fab fa-stack-overflow fa-lg"></i>
+            </a>
+          </div>
+          <div class="mt-6 sm:flex lg:justify-start">
+            <div class="rounded-md shadow">
+              <!-- YOUR EMAIL -->
+              <a href="mailto:kvmukilan@gmail.com" class="w-full flex items-center justify-center px-4 py-2 border border-green-400 text-green-400 font-medium rounded-md text-white bg-transparent hover:bg-gray-800 md:py-3 md:text-lg md:px-6">
+                Contact Me
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="container mx-auto max-w-7xl w-4/5 lg:py-10 lg:text-left">
+        <div class="px-4 sm:px-8 xl:pr-16">
+          <h2 class="heading text-xl color-secondary">
+            <span class="text-green-400">01.</span>
+            About Me
+          </h2>
+          <div class="max-w-7xl py-8 sm:py-12">
+            <div class="relative">
+              <div class="grid grid-cols-1 md:grid-cols-3">
+                <div class="col-span-1 md:col-span-2">
+                  <p class="text-lg font-medium pb-4">
+                    <!-- YOUR DESCRIPTION -->
+                    Hello 👋🏻 My name is Karmukilan. I enjoy building real world AI projects and predicting stuff using mordern day ML techniques  .
+                  </p>
+                  <p class="text-lg font-medium pb-4">
+                    I made <a href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence" target="_blank" class="text-green-400">Open source based LLM on user data with persistence</a> to help companies get instant answers based on their financial data , better on boarding for newcomers in a open and secure way.
+                  </p>
+                  <p class="text-lg font-medium pb-4">
+                    I have some professional experience as a AI engineer working with <a href="https://www.hindustanpetroleum.com/" target="_blank" class="text-green-400">HP</a> and <a href="https://www.linkedin.com/company/miniworld-technology/" target="_blank" class="text-green-400">Miniworld tech</a>. I  have bachelors degree in Information technology and enjoy working on AWS and cloud services.
+                  </p>
+                  <div class="my-4 text-sm border border-green-400 inline-block px-3 py-2 rounded-md hover:bg-gray-800">
+                    <!-- YOUR SKILLS -->
+                    <span>
+                      <i class="fab fa-python fa-lg"></i>
+                    </span>
+                    Python
+                  </div>
+                  <div class="my-4 text-sm border border-orange-400 inline-block px-3 py-2 rounded-md hover:bg-gray-800">
+                    <span>
+                        <i class="fab fa-leanpub fa-lg"></i>
+                    </span>
+                    Jupyter Notebook
+                </div>
+                  <div class="my-4 text-sm border border-green-400 inline-block px-3 py-2 rounded-md hover:bg-gray-800">
+                    <span>
+                      <i class="fab fa-html fa-lg"></i>
+                    </span>
+                    Vue.js
+                  </div>
+                </div>
+                <div class="col-span-1 px-0 md:px-8">
+                  <!-- YOUR PROFILE IMAGE -->
+                  <img class="profile-img " src="profile.png" alt="Miguel Marques">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="container mx-auto md:max-w-5xl w-4/5 md:w-3/5 lg:py-10 lg:text-left">
+        <div class="px-4 sm:px-8 xl:pr-16">
+          <h2 class="heading text-xl color-secondary">
+            <span class="text-green-400">02.</span>
+            What I've Done
+          </h2>
+          <div class="max-w-7xl">
+            <!-- YOUR WORK EXPERIENCE -->
+            <div class="relative pt-8 sm:pt-12">
+              <h3 class="text-lg text-semibold">
+                AI Intern
+                <a href="https://www.hindustanpetroleum.com/" target="_blank" class="text-green-400">@ HP</a>
+              </h3>
+              <p class="text-base color-secondary">June 2023 - August 2023</p>
+              <ul class="experience-list mt-4 color-secondary text-sm md:text-base">
+                <li class="pl-4 mt-2">Better Onboarding: Chatbot based on Onboarding documents so that freshers can have their doubts cleared.</li>
+                <li class="pl-4 mt-2">Better Analaysis: Chatbot based on User Excel sheets so that Financial experts can ask the bot questions based on
+                  comapany Financial data</li>
+                <li class="pl-4 mt-2">Better Security : As chatbots like ChatGPT exists already which isnt very secure , this software is built on open source
+                  code.</li>
+                <li class="pl-4 mt-2">Stack: Python,Langchain,Streamlit, NLP.</li>
+              </ul>
+            </div>
+            <div class="relative pt-8 sm:pt-12">
+              <h3 class="text-lg text-semibold">
+                Data Scientist 
+                <a href="https://www.linkedin.com/company/miniworld-technology/" target="_blank" class="text-green-400">@ miniworld-technology </a>
+                <span class="text-green-400"></span> 
+              </h3>
+              <p class="text-base color-secondary">August 2023-September 2023</p>
+              <ul class="experience-list mt-4 color-secondary text-sm md:text-base">
+                <li class="pl-4 mt-2">Insights and Recommendations: Created a detailed report on Sales data which was given to me and identified areas of improvement, potential opportunities, or issues that require attention.
+                </li>
+                <li class="pl-4 mt-2">Data Analysis: Perform exploratory data analysis (EDA) to uncover patterns, trends, and relationships within the sales data.</li>
+                <li class="pl-4 mt-2">Data Visualization: Create clear and informative visualizations (charts, graphs, etc.) to present key insights and findings.
+                </li>
+                <li class="pl-4 mt-2">Stack: Python,Jupyter notebook, Scikit-Learn, Keras.</li>
+              </ul>
+            </div>
+            
+            <h2 class="text-xl font-semibold pt-16">🎓 Education</h2>
+            <!-- YOUR EDUCATION -->
+            <div class="relative pt-4 sm:pt-6">
+              <h3 class="text-lg text-semibold">
+                Information Technology
+                <a href="https://www.sastra.edu/" target="_blank" class="text-green-400">@ Sastra University</a> 
+              </h3>
+              <p class="text-base color-secondary">bachelors degree</p>
+            </div>
+            <div class="relative pt-4 sm:pt-6">
+              <h3 class="text-lg text-semibold">
+                Web devlopment
+                <a href="https://www.eur.nl/" target="_blank" class="text-green-400">@ Erasmus University Rotterdam</a> 
+              </h3>
+              <p class="text-base color-secondary">Udemy</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="container mx-auto max-w-7xl w-4/5 py-12 lg:py-18 lg:text-left">
+        <div class="px-4 sm:px-8 xl:pr-16">
+          <h2 class="heading text-xl color-secondary">
+            <span class="text-green-400">03.</span>
+            Some Noteworthy Projects
+          </h2>
+          <div class="relative max-w-7xl mx-auto">
+            <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+              <div class="flex flex-col rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:-translate-y-2">
+                <div class="flex-1 bg-light-navy p-6 flex flex-col justify-between">
+                  <div class="flex justify-between">
+                    <span class="pr-4 text-green-400">
+                      <i class="fas fa-folder fa-lg"></i>
+                    </span>
+                    <a target="_blank" href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence" class="pr-4 text-gray-400 hover:text-white">
+                      <i class="fas fa-link"></i>
+                    </a>
+                  </div>
+                  <div class="flex-1 mt-4">
+                    <a target="_blank" href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence" class="block mt-2">
+                      <p class="text-xl font-semibold text-secondary">
+                        Open source based LLM chatbot based on user data with persistence
+                      </p>
+                      <p class="mt-3 text-base text-gray-400">
+                        Open-source chatbot which can work on pdf,png,csv and json files.
+                      </p>
+                    </a>
+                  </div>
+                  <div class="mt-6 flex items-center text-sm text-gray-400">
+                    <div class="flex-shrink-0">
+                      <p>
+                        <span class="pr-1">
+                          <i class="far fa-star"></i>
+                          5
+                        </span>
+                        <span class="pr-1">
+                          <i class="fas fa-code-branch"></i>
+                          3
+                        </span>
+                        <span>|</span>
+                        <em>Python</em>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:-translate-y-2">
+                <div class="flex-1 bg-light-navy p-6 flex flex-col justify-between">
+                  <div class="flex justify-between">
+                    <span class="pr-4 text-green-400">
+                      <i class="fas fa-folder fa-lg"></i>
+                    </span>
+                    <a target="_blank" href="https://github.com/kvmukilan/stock_prediction" class="pr-4 text-gray-400 hover:text-white">
+                      <i class="fas fa-link"></i>
+                    </a>
+                  </div>
+                  <div class="flex-1 mt-4">
+                    <a target="_blank" href="https://github.com/kvmukilan/stock_prediction" class="block mt-2">
+                      <p class="text-xl font-semibold text-secondary">
+                        Stock prediction using LSTM
+                      </p>
+                      <p class="mt-3 text-base text-gray-400">
+                        Stock prediction using LSTM which is a type of recurrent neural network capable of learning order dependence in sequence prediction problems.
+                      </p>
+                    </a>
+                  </div>
+                  <div class="mt-6 flex items-center text-sm text-gray-400">
+                    <div class="flex-shrink-0">
+                      <p>
+                        <em>Python</em>
+                        <em>Flask</em>
+                        <em>Vue.js</em>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:-translate-y-2">
+                <div class="flex-1 bg-light-navy p-6 flex flex-col justify-between">
+                  <div class="flex justify-between">
+                    <span class="pr-4 text-green-400">
+                      <i class="fas fa-folder fa-lg"></i>
+                    </span>
+                    <a target="_blank" href="https://github.com/kvmukilan/Hairline-Removal" class="pr-4 text-gray-400 hover:text-white">
+                      <i class="fas fa-link"></i>
+                    </a>
+                  </div>
+                  <div class="flex-1 mt-4">
+                    <a target="_blank" href="https://github.com/kvmukilan/Hairline-Removal" class="block mt-2">
+                      <p class="text-xl font-semibold text-secondary">
+                        Hairline removal from skin images using CNN
+                      </p>
+                      <p class="mt-3 text-base text-gray-400">
+                        This CNN model removes hairlines from skin images using a U-Net architecture.
+                      </p>
+                    </a>
+                  </div>
+                  <div class="mt-6 flex items-center text-sm text-gray-400">
+                    <div class="flex-shrink-0">
+                      <p>
+                        <em>Python</em>
+                        <em>Flask</em>
+                        <em>Vue.js</em>
+                        <em>Keras</em>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="container mx-auto max-w-7xl w-4/5 py-12 lg:py-18 lg:text-left">
+        <div class="px-4 sm:px-8 xl:pr-16">
+          <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+            <h2 class="text-xl color-secondary py-8">
+              <span class="text-green-400">04.</span>
+              Contact Me
+            </h2>
+            <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+              <span class="block">Get in touch.</span>
+            </h2>
+            <p class="mt-4 text-lg leading-6 text-indigo-200">
+              I'm actively looking for new works and opportunities. Whether you're a company looking to hire me, or you're just looking to chat, I'd love to hear from you.
+            </p>
+            <!-- YOUR EMAIL -->
+            <a href="mailto:kvmukilan@gmail.com" class="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-green-400 text-green-400 text-base font-medium rounded-md text-white bg-transparent hover:bg-gray-800 sm:w-auto">
+              Contact Me
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="py-8">
+      <div class="text-center text-xs text-gray-400">
+        Made by Mukilan
+        
+      </div>
+    </footer>
+  </body>
+</html>
