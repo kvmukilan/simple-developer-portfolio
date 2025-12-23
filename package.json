@@ -1,0 +1,13 @@
+{
+  "name": "simple-developer-portfolio",
+  "version": "1.0.0",
+  "description": "Modern developer portfolio",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Karmukilan V",
+  "license": "ISC"
+}
