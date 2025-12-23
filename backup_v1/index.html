@@ -22,31 +22,27 @@
 
   <style>
     /* Reveal Animation Styles to avoid FOUC */
-    /* Reveal Animation Styles to avoid FOUC */
     .reveal {
-      opacity: 1;
-      /* Changed from 0 to 1 to fix visibility issue */
-      transform: translateY(0);
-      /* Changed to 0 */
+      opacity: 0;
+      transform: translateY(30px);
       transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
     }
 
-    .reveal.active {
-      /* Using .active to trigger animation if needed later */
+    .reveal.visible {
+      opacity: 1;
       transform: translateY(0);
     }
   </style>
 </head>
 
 <body class="antialiased selection:bg-green-300 selection:text-green-900">
-  <canvas id="canvas-bg"></canvas>
 
   <!-- Navbar -->
   <nav class="fixed w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <div class="flex-shrink-0">
-          <a href="#" class="text-green text-2xl font-bold font-mono glitch-hover" data-text="M.">M.</a>
+          <a href="#" class="text-green text-2xl font-bold font-mono">M.</a>
         </div>
 
         <!-- Desktop Menu -->
@@ -104,12 +100,11 @@
     <section id="home" class="min-h-screen flex items-center justify-center container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl w-full reveal">
         <p class="text-green font-mono mb-5 ml-1">Hi, my name is</p>
-        <h1 class="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-tight glitch-hover"
-          data-text="Karmukilan V.">
+        <h1 class="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-tight">
           Karmukilan V.
         </h1>
         <h2 class="text-4xl sm:text-6xl font-bold text-slate mb-8 tracking-tight">
-          <span id="typing-text"></span><span class="cursor-blink">|</span>
+          I build things for the web.
         </h2>
         <p class="max-w-xl text-slate text-lg mb-12 leading-relaxed">
           I'm an AI/ML engineer, Data analyst and UI/UX designer. I'm passionate about building products that solve real
