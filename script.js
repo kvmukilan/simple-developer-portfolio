@@ -1,5 +1,5 @@
 /* ========================================
-   Premium Portfolio - JavaScript
+   Premium Portfolio - Optimized JavaScript
    ======================================== */
 
 // DOM Elements
@@ -24,26 +24,27 @@ function applyTheme(theme) {
 
   if (theme === 'dark') {
     html.classList.add('dark');
-    themeIcon.classList.remove('fa-moon');
-    themeIcon.classList.add('fa-sun');
+    if (themeIcon) {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
   } else {
     html.classList.remove('dark');
-    themeIcon.classList.remove('fa-sun');
-    themeIcon.classList.add('fa-moon');
+    if (themeIcon) {
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+    }
   }
 
   localStorage.setItem('theme', theme);
 }
 
-// Initialize theme
 applyTheme(getThemePreference());
 
-// Theme toggle click handler
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
   });
 }
 
@@ -57,16 +58,13 @@ if (mobileMenuBtn && mobileMenu) {
     mobileMenu.classList.toggle('active');
   });
 
-  // Close menu when clicking a link
-  const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
-  mobileLinks.forEach(link => {
+  mobileMenu.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenuBtn.classList.remove('active');
       mobileMenu.classList.remove('active');
     });
   });
 
-  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
       mobileMenuBtn.classList.remove('active');
@@ -87,37 +85,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
 
 /* ========================================
-   4. Navbar Scroll Effect
+   4. Optimized Scroll Handler (Single Listener)
    ======================================== */
 
-let lastScroll = 0;
+let ticking = false;
+const scrollIndicator = document.querySelector('.scroll-indicator');
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
+function onScroll() {
+  const scrollY = window.pageYOffset;
 
-  if (currentScroll > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+  // Navbar effect
+  if (navbar) {
+    navbar.classList.toggle('scrolled', scrollY > 50);
   }
 
-  lastScroll = currentScroll;
-});
+  // Hide scroll indicator
+  if (scrollIndicator) {
+    scrollIndicator.style.opacity = scrollY > 100 ? '0' : '1';
+  }
+
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(onScroll);
+    ticking = true;
+  }
+}, { passive: true });
 
 /* ========================================
    5. Reveal on Scroll (Intersection Observer)
    ======================================== */
-
-const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -126,207 +131,88 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-revealElements.forEach(el => {
-  revealObserver.observe(el);
-});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ========================================
-   6. 3D Tilt Effect on Cards
+   6. Lightweight 3D Tilt Effect (Throttled)
    ======================================== */
 
 const tiltCards = document.querySelectorAll('.tilt-card');
 
 tiltCards.forEach(card => {
+  let rafId = null;
+
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'none';
+  });
+
   card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    if (rafId) return; // Throttle
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    rafId = requestAnimationFrame(() => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 25;
+      const rotateY = (centerX - x) / 25;
 
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      rafId = null;
+    });
   });
 
   card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+    card.style.transition = 'transform 0.3s ease';
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
   });
 });
 
 /* ========================================
-   7. Active Navigation Link Highlight
+   7. Counter Animation (On Visibility)
    ======================================== */
-
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
-  let current = '';
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    if (window.pageYOffset >= sectionTop - 200) {
-      current = section.getAttribute('id');
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
-});
-
-/* ========================================
-   8. Typed Text Effect (Optional)
-   ======================================== */
-
-// Simple typing effect for hero section
-const typedText = document.querySelector('.gradient-text');
-if (typedText) {
-  const words = ['secure AI systems', 'intelligent security tools', 'threat detection systems'];
-  let wordIndex = 0;
-
-  // Optional: Enable typing effect by uncommenting below
-  /*
-  function typeWord() {
-    const word = words[wordIndex];
-    typedText.textContent = word;
-    wordIndex = (wordIndex + 1) % words.length;
-    setTimeout(typeWord, 3000);
-  }
-  typeWord();
-  */
-}
-
-/* ========================================
-   9. Smooth Counter Animation
-   ======================================== */
-
-const statValues = document.querySelectorAll('.stat-value');
 
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const target = entry.target;
-      const value = target.textContent;
-
-      // Check if it's a number
+      const el = entry.target;
+      const value = el.textContent;
       if (/^\d+/.test(value)) {
         const num = parseInt(value);
-        animateCounter(target, num);
+        const suffix = value.replace(/[\d]/g, '');
+        let current = 0;
+        const increment = num / 20;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= num) {
+            el.textContent = num + suffix;
+            clearInterval(timer);
+          } else {
+            el.textContent = Math.floor(current) + suffix;
+          }
+        }, 40);
       }
-
-      counterObserver.unobserve(target);
+      counterObserver.unobserve(el);
     }
   });
 }, { threshold: 0.5 });
 
-function animateCounter(element, target) {
-  let current = 0;
-  const increment = target / 30;
-  const suffix = element.textContent.replace(/[\d]/g, '');
-
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = target + suffix;
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(current) + suffix;
-    }
-  }, 30);
-}
-
-statValues.forEach(stat => {
-  counterObserver.observe(stat);
-});
+document.querySelectorAll('.stat-value').forEach(stat => counterObserver.observe(stat));
 
 /* ========================================
-   10. Magnetic Button Effect
-   ======================================== */
-
-const magneticBtns = document.querySelectorAll('.btn-glow');
-
-magneticBtns.forEach(btn => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) translateY(-2px)`;
-  });
-
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = 'translate(0, 0)';
-  });
-});
-
-/* ========================================
-   11. Page Load Animations
-   ======================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('loaded');
-
-  // Staggered animation for hero elements
-  const heroElements = document.querySelectorAll('.hero-content > *');
-  heroElements.forEach((el, i) => {
-    el.style.animationDelay = `${i * 0.1}s`;
-  });
-});
-
-/* ========================================
-   12. Parallax Effect on Scroll
-   ======================================== */
-
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-
-  // Subtle parallax on background
-  const bgGradient = document.querySelector('.bg-gradient');
-  if (bgGradient) {
-    bgGradient.style.transform = `translateY(${scrolled * 0.3}px)`;
-  }
-});
-
-/* ========================================
-   13. Hide Scroll Indicator on Scroll
-   ======================================== */
-
-const scrollIndicator = document.querySelector('.scroll-indicator');
-
-window.addEventListener('scroll', () => {
-  if (scrollIndicator) {
-    if (window.pageYOffset > 100) {
-      scrollIndicator.style.opacity = '0';
-      scrollIndicator.style.pointerEvents = 'none';
-    } else {
-      scrollIndicator.style.opacity = '1';
-      scrollIndicator.style.pointerEvents = 'auto';
-    }
-  }
-});
-
-/* ========================================
-   14. Keyboard Navigation Support
+   8. Keyboard Support
    ======================================== */
 
 document.addEventListener('keydown', (e) => {
-  // ESC to close mobile menu
-  if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+  if (e.key === 'Escape' && mobileMenu?.classList.contains('active')) {
     mobileMenuBtn.classList.remove('active');
     mobileMenu.classList.remove('active');
   }
 });
 
-console.log('Portfolio loaded successfully! 🚀');
+console.log('Portfolio loaded! 🚀');

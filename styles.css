@@ -117,10 +117,11 @@ html.dark .bg-gradient {
   background-image:
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-size: 80px 80px;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.3;
+  will-change: auto;
 }
 
 /* ========================================
@@ -207,10 +208,8 @@ strong {
    ======================================== */
 
 .glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
   border-radius: 20px;
 }
 
@@ -229,10 +228,9 @@ strong {
 }
 
 .navbar.scrolled {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -440,14 +438,14 @@ strong {
   top: 100%;
   left: 24px;
   right: 24px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 16px;
   flex-direction: column;
   gap: 8px;
   margin-top: 16px;
+  box-shadow: var(--shadow-lg);
 }
 
 .mobile-menu.active { display: flex; }
@@ -961,8 +959,7 @@ strong {
 
 .bento-item:hover {
   border-color: var(--accent-1);
-  box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.1);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Bento Sizes */
@@ -1249,7 +1246,8 @@ strong {
 
 .tilt-card {
   transform-style: preserve-3d;
-  perspective: 1000px;
+  will-change: transform;
+  transition: transform 0.3s ease;
 }
 
 /* ========================================
