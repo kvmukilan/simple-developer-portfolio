@@ -1,5 +1,5 @@
 /* ========================================
-   Modern Portfolio - JavaScript
+   Premium Portfolio - JavaScript
    ======================================== */
 
 // DOM Elements
@@ -13,17 +13,12 @@ const navbar = document.querySelector('.navbar');
    1. Theme Toggle (Dark/Light Mode)
    ======================================== */
 
-// Check for saved theme preference or default to dark
 function getThemePreference() {
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    return savedTheme;
-  }
-  // Default to dark theme
+  if (savedTheme) return savedTheme;
   return 'dark';
 }
 
-// Apply theme to document
 function applyTheme(theme) {
   const html = document.documentElement;
 
@@ -88,7 +83,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const targetId = this.getAttribute('href');
-
     if (targetId === '#') return;
 
     const targetElement = document.querySelector(targetId);
@@ -110,46 +104,65 @@ let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
 
-  // Add shadow when scrolled
-  if (currentScroll > 10) {
-    navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.1)';
+  if (currentScroll > 50) {
+    navbar.classList.add('scrolled');
   } else {
-    navbar.style.boxShadow = 'none';
+    navbar.classList.remove('scrolled');
   }
 
   lastScroll = currentScroll;
 });
 
 /* ========================================
-   5. Intersection Observer for Animations
+   5. Reveal on Scroll (Intersection Observer)
    ======================================== */
 
-const observerOptions = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.1
-};
+const revealElements = document.querySelectorAll('.reveal');
 
-const fadeInObserver = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      fadeInObserver.unobserve(entry.target);
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+});
 
-// Apply subtle fade-in to sections
-document.querySelectorAll('.section').forEach((section, index) => {
-  section.style.opacity = '0';
-  section.style.transform = 'translateY(20px)';
-  section.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-  fadeInObserver.observe(section);
+revealElements.forEach(el => {
+  revealObserver.observe(el);
 });
 
 /* ========================================
-   6. Active Navigation Link
+   6. 3D Tilt Effect on Cards
+   ======================================== */
+
+const tiltCards = document.querySelectorAll('.tilt-card');
+
+tiltCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+  });
+});
+
+/* ========================================
+   7. Active Navigation Link Highlight
    ======================================== */
 
 const sections = document.querySelectorAll('section[id]');
@@ -160,8 +173,6 @@ window.addEventListener('scroll', () => {
 
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-
     if (window.pageYOffset >= sectionTop - 200) {
       current = section.getAttribute('id');
     }
@@ -176,37 +187,146 @@ window.addEventListener('scroll', () => {
 });
 
 /* ========================================
-   7. Card Hover Effects (subtle)
+   8. Typed Text Effect (Optional)
    ======================================== */
 
-const cards = document.querySelectorAll('.project-card, .experience-item, .case-study-card');
+// Simple typing effect for hero section
+const typedText = document.querySelector('.gradient-text');
+if (typedText) {
+  const words = ['secure AI systems', 'intelligent security tools', 'threat detection systems'];
+  let wordIndex = 0;
 
-cards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.style.transition = 'all 0.3s ease';
+  // Optional: Enable typing effect by uncommenting below
+  /*
+  function typeWord() {
+    const word = words[wordIndex];
+    typedText.textContent = word;
+    wordIndex = (wordIndex + 1) % words.length;
+    setTimeout(typeWord, 3000);
+  }
+  typeWord();
+  */
+}
+
+/* ========================================
+   9. Smooth Counter Animation
+   ======================================== */
+
+const statValues = document.querySelectorAll('.stat-value');
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const value = target.textContent;
+
+      // Check if it's a number
+      if (/^\d+/.test(value)) {
+        const num = parseInt(value);
+        animateCounter(target, num);
+      }
+
+      counterObserver.unobserve(target);
+    }
+  });
+}, { threshold: 0.5 });
+
+function animateCounter(element, target) {
+  let current = 0;
+  const increment = target / 30;
+  const suffix = element.textContent.replace(/[\d]/g, '');
+
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = target + suffix;
+      clearInterval(timer);
+    } else {
+      element.textContent = Math.floor(current) + suffix;
+    }
+  }, 30);
+}
+
+statValues.forEach(stat => {
+  counterObserver.observe(stat);
+});
+
+/* ========================================
+   10. Magnetic Button Effect
+   ======================================== */
+
+const magneticBtns = document.querySelectorAll('.btn-glow');
+
+magneticBtns.forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) translateY(-2px)`;
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = 'translate(0, 0)';
   });
 });
 
 /* ========================================
-   8. Initialize on DOM Load
+   11. Page Load Animations
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Remove loading state if any
-  document.body.classList.remove('loading');
+  document.body.classList.add('loaded');
 
-  // Trigger initial animations
-  setTimeout(() => {
-    document.querySelectorAll('.hero-content > *').forEach((el, i) => {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    });
-  }, 100);
+  // Staggered animation for hero elements
+  const heroElements = document.querySelectorAll('.hero-content > *');
+  heroElements.forEach((el, i) => {
+    el.style.animationDelay = `${i * 0.1}s`;
+  });
 });
 
-// Hero content initial state
-document.querySelectorAll('.hero-content > *').forEach((el, i) => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
+/* ========================================
+   12. Parallax Effect on Scroll
+   ======================================== */
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+
+  // Subtle parallax on background
+  const bgGradient = document.querySelector('.bg-gradient');
+  if (bgGradient) {
+    bgGradient.style.transform = `translateY(${scrolled * 0.3}px)`;
+  }
 });
+
+/* ========================================
+   13. Hide Scroll Indicator on Scroll
+   ======================================== */
+
+const scrollIndicator = document.querySelector('.scroll-indicator');
+
+window.addEventListener('scroll', () => {
+  if (scrollIndicator) {
+    if (window.pageYOffset > 100) {
+      scrollIndicator.style.opacity = '0';
+      scrollIndicator.style.pointerEvents = 'none';
+    } else {
+      scrollIndicator.style.opacity = '1';
+      scrollIndicator.style.pointerEvents = 'auto';
+    }
+  }
+});
+
+/* ========================================
+   14. Keyboard Navigation Support
+   ======================================== */
+
+document.addEventListener('keydown', (e) => {
+  // ESC to close mobile menu
+  if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+    mobileMenuBtn.classList.remove('active');
+    mobileMenu.classList.remove('active');
+  }
+});
+
+console.log('Portfolio loaded successfully! 🚀');
