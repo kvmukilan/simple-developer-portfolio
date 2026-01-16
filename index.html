@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -14,153 +14,128 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://muki-portfolio.vercel.app">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS (for layout utilities only) -->
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
 
-  <title>Mukilan | Cybersecurity & AI Engineer</title>
-
-  <style>
-    /* Reveal Animation Styles to avoid FOUC */
-    /* Reveal Animation Styles to avoid FOUC */
-    .reveal {
-      opacity: 1;
-      /* Changed from 0 to 1 to fix visibility issue */
-      transform: translateY(0);
-      /* Changed to 0 */
-      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-
-    .reveal.active {
-      /* Using .active to trigger animation if needed later */
-      transform: translateY(0);
-    }
-  </style>
+  <title>Karmukilan V | Cybersecurity & AI</title>
 </head>
 
-<body class="antialiased selection:bg-green-300 selection:text-green-900">
-  <canvas id="canvas-bg"></canvas>
-
+<body>
   <!-- Navbar -->
-  <nav class="fixed w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <div class="flex-shrink-0">
-          <a href="#" class="text-green text-2xl font-bold font-mono glitch-hover" data-text="M.">M.</a>
-        </div>
+  <header class="navbar">
+    <nav class="nav-container">
+      <a href="#" class="logo">KV<span class="logo-dot">.</span></a>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-8">
-            <a href="#about"
-              class="text-light-slate hover:text-green px-3 py-2 rounded-md text-sm font-medium font-mono"><span
-                class="text-green">01.</span> About</a>
-            <a href="#experience"
-              class="text-light-slate hover:text-green px-3 py-2 rounded-md text-sm font-medium font-mono"><span
-                class="text-green">02.</span> Experience</a>
-            <a href="#work"
-              class="text-light-slate hover:text-green px-3 py-2 rounded-md text-sm font-medium font-mono"><span
-                class="text-green">03.</span> Work</a>
-            <a href="#contact"
-              class="text-light-slate hover:text-green px-3 py-2 rounded-md text-sm font-medium font-mono"><span
-                class="text-green">04.</span> Contact</a>
-            <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank"
-              class="btn-primary ml-4">Resume</a>
-          </div>
-        </div>
-
-        <!-- Mobile menu button -->
-        <div class="-mr-2 flex md:hidden">
-          <button type="button"
-            class="mobile-menu-btn inline-flex items-center justify-center p-2 rounded-md text-green hover:text-white focus:outline-none"
-            aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation menu">
-            <span class="sr-only">Open main menu</span>
-            <i class="fas fa-bars fa-lg"></i>
-          </button>
-        </div>
+      <div class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#case-studies" class="nav-link">Case Studies</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
-    </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" class="btn btn-primary">Resume</a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+          <span class="hamburger"></span>
+        </button>
+      </div>
+    </nav>
 
     <!-- Mobile Menu -->
-    <div class="md:hidden mobile-menu hidden bg-light-navy shadow-lg absolute w-full left-0 top-20">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-lightest-navy">
-        <a href="#about"
-          class="text-slate hover:text-white block px-3 py-2 rounded-md text-base font-medium font-mono">01. About</a>
-        <a href="#experience"
-          class="text-slate hover:text-white block px-3 py-2 rounded-md text-base font-medium font-mono">02.
-          Experience</a>
-        <a href="#work"
-          class="text-slate hover:text-white block px-3 py-2 rounded-md text-base font-medium font-mono">03. Work</a>
-        <a href="#contact"
-          class="text-slate hover:text-white block px-3 py-2 rounded-md text-base font-medium font-mono">04. Contact</a>
-        <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank"
-          class="text-green block px-3 py-2 rounded-md text-base font-medium font-mono">Resume</a>
-      </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#experience" class="mobile-link">Experience</a>
+      <a href="#projects" class="mobile-link">Projects</a>
+      <a href="#case-studies" class="mobile-link">Case Studies</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+      <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" class="mobile-link accent">Resume</a>
     </div>
-  </nav>
+  </header>
 
-  <main class="pt-20">
+  <main>
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl w-full reveal">
-        <p class="text-green font-mono mb-5 ml-1">Hi, my name is</p>
-        <h1 class="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-tight glitch-hover"
-          data-text="Karmukilan V.">
-          Karmukilan V.
-        </h1>
-        <h2 class="text-4xl sm:text-6xl font-bold text-slate mb-8 tracking-tight">
-          <span id="typing-text"></span><span class="cursor-blink">|</span>
-        </h2>
-        <p class="max-w-xl text-slate text-lg mb-12 leading-relaxed">
-          I'm a Cybersecurity Analyst & AI Engineer pursuing M.Tech in AI & Data Science
-          (Cybersecurity Specialization) at NFSU. I build secure intelligent systems that
-          bridge security and machine learning.
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-name">Karmukilan V.</h1>
+        <h2 class="hero-title">Cybersecurity Analyst & AI Engineer</h2>
+        <p class="hero-description">
+          I'm pursuing M.Tech in AI & Data Science (Cybersecurity Specialization) at NFSU.
+          I build secure intelligent systems that bridge security and machine learning.
         </p>
-        <a href="#work" class="btn-primary text-lg px-8 py-4">Check out my work!</a>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+        <div class="hero-social">
+          <a href="https://github.com/kvmukilan" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/karmukilanv/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:kvmukilan@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 container mx-auto px-4 sm:px-6 lg:px-8 reveal">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="heading text-white"><span class="text-green font-mono text-xl mr-2">01.</span> About Me</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div class="col-span-2 text-slate space-y-4">
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-content">
             <p>
-              Hello! My name is Karmukilan. I'm pursuing my <a href="https://www.nfsu.ac.in/"
-                class="text-green hover:underline">M.Tech in AI & Data Science (Cybersecurity Specialization)</a> at
-              National Forensic Sciences University, with a B.Tech in Information Technology from
-              <a href="https://www.sastra.edu/" class="text-green hover:underline">SASTRA University</a>.
+              Hello! I'm Karmukilan, a cybersecurity enthusiast and AI engineer based in India. I'm currently pursuing my
+              <strong>M.Tech in AI & Data Science (Cybersecurity Specialization)</strong> at National Forensic Sciences University,
+              building on my B.Tech in Information Technology from SASTRA University.
             </p>
             <p>
-              Currently, I'm working as a Cybersecurity & AI Intern at <a href="https://global.abb/"
-                class="text-green hover:underline">ABB</a>, focusing on VAPT, AI-assisted security analysis, and
-              Graph-RAG pipelines. Previously, I contributed to AI-driven supply chain security at
-              <a href="https://cmo.gujarat.gov.in/" class="text-green hover:underline">CMO Gujarat – AI Task Force</a>.
+              My work sits at the intersection of security and artificial intelligence. I specialize in vulnerability assessment,
+              AI-assisted security analysis, and building intelligent systems that enhance security operations.
             </p>
-            <p>Here are a few technologies I've been working with recently:</p>
-
-            <ul class="grid grid-cols-2 gap-2 mt-4 font-mono text-sm">
-              <li class="flex items-center"><span class="text-green mr-2">▹</span> Python / C++</li>
-              <li class="flex items-center"><span class="text-green mr-2">▹</span> LangChain / PyTorch</li>
-              <li class="flex items-center"><span class="text-green mr-2">▹</span> Burp Suite / Wireshark</li>
-              <li class="flex items-center"><span class="text-green mr-2">▹</span> Neo4j / FAISS</li>
-              <li class="flex items-center"><span class="text-green mr-2">▹</span> MobSF / Frida</li>
-              <li class="flex items-center"><span class="text-green mr-2">▹</span> Docker / Git</li>
-            </ul>
+            <p>Here are some technologies I work with:</p>
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h4>Security</h4>
+                <ul>
+                  <li>Burp Suite</li>
+                  <li>Wireshark</li>
+                  <li>MobSF / Frida</li>
+                  <li>Nmap</li>
+                </ul>
+              </div>
+              <div class="skill-category">
+                <h4>AI/ML</h4>
+                <ul>
+                  <li>Python</li>
+                  <li>LangChain</li>
+                  <li>PyTorch</li>
+                  <li>Neo4j / FAISS</li>
+                </ul>
+              </div>
+              <div class="skill-category">
+                <h4>Tools</h4>
+                <ul>
+                  <li>Docker</li>
+                  <li>Git</li>
+                  <li>Azure</li>
+                  <li>Linux</li>
+                </ul>
+              </div>
+            </div>
           </div>
-
-          <div class="col-span-1 flex justify-center md:justify-start">
-            <div class="profile-img-container group">
-              <div class="profile-img-border group-hover:translate-x-1 group-hover:translate-y-1"></div>
-              <img class="profile-img relative z-10" src="profile.png" alt="Mukilan">
+          <div class="about-image">
+            <div class="image-wrapper">
+              <img src="profile.png" alt="Karmukilan V" class="profile-image">
             </div>
           </div>
         </div>
@@ -168,257 +143,250 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-24 container mx-auto px-4 sm:px-6 lg:px-8 reveal">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="heading text-white"><span class="text-green font-mono text-xl mr-2">02.</span> Where I've Worked</h2>
+    <section id="experience" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-list">
 
-        <div class="space-y-12 mt-12">
-          <!-- Job 0: ABB -->
-          <div class="relative pl-8 border-l-2 border-lightest-navy">
-            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green text-green"></div>
-            <h3 class="text-xl font-medium text-white">
-              Cybersecurity & AI Intern <span class="text-green">@ ABB (CDEC – Electrification)</span>
-            </h3>
-            <p class="font-mono text-sm text-light-slate mb-4">July 2025 - Present</p>
-            <ul class="experience-list text-slate">
-              <li>Authored 2 VAPT reports (Android & Web) with reproducible PoCs and risk-based remediation priorities.</li>
-              <li>Built AI-assisted PCAP analyzer using silence gaps, TCP RST clusters, and entropy spikes to surface crash-inducing payloads.</li>
-              <li>Developed Graph-RAG pipeline: CSV → Neo4j graph + FAISS/Milvus with Azure OpenAI embeddings and provenance-aware rerankers.</li>
-              <li><strong>Stack:</strong> Python, LangChain, Neo4j, Wireshark, Burp Suite</li>
-            </ul>
-          </div>
-
-          <!-- Job 1: CMO Gujarat -->
-          <div class="relative pl-8 border-l-2 border-lightest-navy">
-            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green text-green"></div>
-            <h3 class="text-xl font-medium text-white">
-              Cybersecurity & AI Intern <span class="text-green">@ CMO, Gujarat – AI Task Force</span>
-            </h3>
-            <p class="font-mono text-sm text-light-slate mb-4">October 2024 - December 2024</p>
-            <ul class="experience-list text-slate">
-              <li>Built ANPR-driven verification system using YOLOv8 + OCR for licence-plate recognition at supply-chain checkpoints.</li>
-              <li>Explored manifest integrity with blockchain-style ledgers; flagged anomalies in deliveries.</li>
-              <li>Threat-modeled the ANPR pipeline and added ML-based tamper-detection logic.</li>
-              <li><strong>Stack:</strong> Python, YOLOv8, OpenCV, Scikit-learn</li>
-            </ul>
-          </div>
-
-          <!-- Job 2: HP -->
-          <div class="relative pl-8 border-l-2 border-lightest-navy">
-            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-lightest-navy hover:bg-green transition-colors"></div>
-            <h3 class="text-xl font-medium text-white">
-              AI Intern <span class="text-green">@ HP</span>
-            </h3>
-            <p class="font-mono text-sm text-light-slate mb-4">June 2023 - August 2023</p>
-            <ul class="experience-list text-slate">
-              <li>Built an onboarding chatbot to help freshers clear doubts using company documents.</li>
-              <li>Developed a financial analysis chatbot allowing experts to query Excel data efficiently.</li>
-              <li>Focused on security and open-source solutions to ensure data privacy.</li>
-              <li><strong>Stack:</strong> Python, LangChain, Streamlit, NLP</li>
-            </ul>
-          </div>
-
-          <!-- Job 3: Miniworld Tech -->
-          <div class="relative pl-8 border-l-2 border-lightest-navy">
-            <div
-              class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-lightest-navy hover:bg-green transition-colors">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-role">Cybersecurity & AI Intern</h3>
+                <p class="experience-company">ABB (CDEC – Electrification)</p>
+              </div>
+              <span class="experience-date">Jul 2025 - Present</span>
             </div>
-            <h3 class="text-xl font-medium text-white">
-              Data Scientist <span class="text-green">@ Miniworld Tech</span>
-            </h3>
-            <p class="font-mono text-sm text-light-slate mb-4">August 2023 - September 2023</p>
-            <ul class="experience-list text-slate">
-              <li>Analyzed sales data to identify trends, opportunities, and areas for improvement.</li>
-              <li>Performed Exploratory Data Analysis (EDA) and created visualizations to present findings.</li>
-              <li><strong>Stack:</strong> Python, Jupyter, Scikit-Learn, Keras</li>
+            <ul class="experience-points">
+              <li>Authored 2 VAPT reports (Android & Web) with reproducible PoCs and risk-based remediation priorities</li>
+              <li>Built AI-assisted PCAP analyzer using silence gaps, TCP RST clusters, and entropy spikes to surface crash-inducing payloads</li>
+              <li>Developed Graph-RAG pipeline: CSV → Neo4j graph + FAISS/Milvus with Azure OpenAI embeddings</li>
             </ul>
+            <div class="experience-tags">
+              <span>Python</span><span>LangChain</span><span>Neo4j</span><span>Burp Suite</span>
+            </div>
           </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-role">Cybersecurity & AI Intern</h3>
+                <p class="experience-company">CMO, Gujarat – AI Task Force</p>
+              </div>
+              <span class="experience-date">Oct 2024 - Dec 2024</span>
+            </div>
+            <ul class="experience-points">
+              <li>Built ANPR-driven verification using YOLOv8 + OCR for licence-plate recognition at supply-chain checkpoints</li>
+              <li>Explored manifest integrity with blockchain-style ledgers; flagged anomalies in deliveries</li>
+              <li>Threat-modeled the ANPR pipeline and added ML-based tamper-detection logic</li>
+            </ul>
+            <div class="experience-tags">
+              <span>YOLOv8</span><span>OpenCV</span><span>Scikit-learn</span>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-role">AI Intern</h3>
+                <p class="experience-company">HP</p>
+              </div>
+              <span class="experience-date">Jun 2023 - Aug 2023</span>
+            </div>
+            <ul class="experience-points">
+              <li>Built an onboarding chatbot to help freshers using company documents</li>
+              <li>Developed a financial analysis chatbot for querying Excel data efficiently</li>
+              <li>Focused on security and open-source solutions to ensure data privacy</li>
+            </ul>
+            <div class="experience-tags">
+              <span>LangChain</span><span>Streamlit</span><span>NLP</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="py-24 container mx-auto px-4 sm:px-6 lg:px-8 reveal">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="heading text-white"><span class="text-green font-mono text-xl mr-2">03.</span> Some Things I've Built
-        </h2>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          <article class="project-card">
+            <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3 class="project-title">Agentic Security Analyst</h3>
+            <p class="project-description">AI-assisted security analyst using LangChain to orchestrate scans, retrieve logs, and draft triage notes aligned to MITRE ATT&CK.</p>
+            <div class="project-tags">
+              <span>Python</span><span>LangChain</span><span>MITRE ATT&CK</span>
+            </div>
+            <a href="https://github.com/kvmukilan" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </article>
 
-          <!-- Security Project 1: Agentic Security Analyst -->
-          <div class="card flex flex-col h-full group">
-            <div class="flex justify-between items-center mb-6">
-              <i class="fas fa-shield-alt fa-2x text-green"></i>
-              <div class="flex space-x-4">
-                <a href="https://github.com/kvmukilan" target="_blank" class="text-light-slate hover:text-green">
-                  <i class="fab fa-github fa-lg"></i>
-                </a>
+          <article class="project-card">
+            <div class="project-icon"><i class="fas fa-network-wired"></i></div>
+            <h3 class="project-title">AI-PCAP Incident Triage</h3>
+            <p class="project-description">Analyzes fuzzing-session PCAPs to surface suspicious sessions via timing gaps, TCP RST bursts, and entropy shifts.</p>
+            <div class="project-tags">
+              <span>Python</span><span>Scapy</span><span>Wireshark</span>
+            </div>
+            <a href="https://github.com/kvmukilan" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon"><i class="fas fa-project-diagram"></i></div>
+            <h3 class="project-title">Graph-RAG Security Assistant</h3>
+            <p class="project-description">Security knowledge retrieval with Neo4j graph & vector DB, mapping answers to ISO 27001/NIST CSF controls.</p>
+            <div class="project-tags">
+              <span>Neo4j</span><span>FAISS</span><span>LangChain</span>
+            </div>
+            <a href="https://github.com/kvmukilan" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon"><i class="fas fa-robot"></i></div>
+            <h3 class="project-title">LLM Q&A Assistant</h3>
+            <p class="project-description">Open-source chatbot answering questions from PDF, CSV, JSON, and image files with persistence.</p>
+            <div class="project-tags">
+              <span>Python</span><span>LangChain</span><span>LLM</span>
+            </div>
+            <a href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+            <h3 class="project-title">Stock Prediction LSTM</h3>
+            <p class="project-description">LSTM neural networks for learning order dependence in sequence prediction for stock market analysis.</p>
+            <div class="project-tags">
+              <span>Python</span><span>Keras</span><span>Deep Learning</span>
+            </div>
+            <a href="https://github.com/kvmukilan/stock_prediction" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-icon"><i class="fas fa-microscope"></i></div>
+            <h3 class="project-title">Hairline Removal CNN</h3>
+            <p class="project-description">U-Net based CNN to remove hairlines from dermoscopic skin images for better medical analysis.</p>
+            <div class="project-tags">
+              <span>Python</span><span>OpenCV</span><span>U-Net</span>
+            </div>
+            <a href="https://github.com/kvmukilan/Hairline-Removal" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Case Studies</h2>
+        <div class="case-studies-grid">
+
+          <article class="case-study-card">
+            <div class="case-study-image">
+              <div class="case-study-placeholder"><i class="fas fa-file-shield"></i></div>
+            </div>
+            <div class="case-study-content">
+              <span class="case-study-tag">Security Assessment</span>
+              <h3 class="case-study-title">Enterprise Android VAPT</h3>
+              <p class="case-study-description">
+                Conducted comprehensive vulnerability assessment of an enterprise Android application at ABB.
+                Identified critical vulnerabilities including insecure data storage and improper certificate validation.
+                Delivered reproducible PoCs and risk-based remediation roadmap.
+              </p>
+              <div class="case-study-metrics">
+                <div class="metric">
+                  <span class="metric-value">12</span>
+                  <span class="metric-label">Vulnerabilities Found</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">3</span>
+                  <span class="metric-label">Critical Issues</span>
+                </div>
               </div>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green transition-colors">
-              Agentic Security Analyst
-            </h3>
-            <div class="text-slate mb-6 flex-grow">
-              <p>AI-assisted security analyst using LangChain tool-use to orchestrate scans, retrieve logs, and draft triage notes aligned to MITRE ATT&CK.</p>
-            </div>
-            <div class="font-mono text-xs text-light-slate flex flex-wrap gap-2 mt-auto">
-              <span>Python</span>
-              <span>LangChain</span>
-              <span>MITRE ATT&CK</span>
-            </div>
-          </div>
+          </article>
 
-          <!-- Security Project 2: AI-PCAP Incident Triage -->
-          <div class="card flex flex-col h-full group">
-            <div class="flex justify-between items-center mb-6">
-              <i class="fas fa-network-wired fa-2x text-green"></i>
-              <div class="flex space-x-4">
-                <a href="https://github.com/kvmukilan" target="_blank" class="text-light-slate hover:text-green">
-                  <i class="fab fa-github fa-lg"></i>
-                </a>
+          <article class="case-study-card">
+            <div class="case-study-image">
+              <div class="case-study-placeholder"><i class="fas fa-brain"></i></div>
+            </div>
+            <div class="case-study-content">
+              <span class="case-study-tag">AI Security</span>
+              <h3 class="case-study-title">AI-Assisted PCAP Analysis Pipeline</h3>
+              <p class="case-study-description">
+                Built an intelligent PCAP analysis system that identifies potential crash-inducing payloads through
+                statistical analysis of timing gaps, TCP RST clusters, and entropy patterns. Reduced manual analysis
+                time by automating anomaly detection.
+              </p>
+              <div class="case-study-metrics">
+                <div class="metric">
+                  <span class="metric-value">70%</span>
+                  <span class="metric-label">Time Saved</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">85%</span>
+                  <span class="metric-label">Detection Rate</span>
+                </div>
               </div>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green transition-colors">
-              AI-PCAP Incident Triage
-            </h3>
-            <div class="text-slate mb-6 flex-grow">
-              <p>Analyzes fuzzing-session PCAPs to surface suspicious sessions via timing gaps, TCP RST bursts, and entropy shifts with anomaly scoring.</p>
-            </div>
-            <div class="font-mono text-xs text-light-slate flex flex-wrap gap-2 mt-auto">
-              <span>Python</span>
-              <span>Scapy</span>
-              <span>Wireshark</span>
-            </div>
-          </div>
+          </article>
 
-          <!-- Security Project 3: Graph-RAG Security Assistant -->
-          <div class="card flex flex-col h-full group">
-            <div class="flex justify-between items-center mb-6">
-              <i class="fas fa-project-diagram fa-2x text-green"></i>
-              <div class="flex space-x-4">
-                <a href="https://github.com/kvmukilan" target="_blank" class="text-light-slate hover:text-green">
-                  <i class="fab fa-github fa-lg"></i>
-                </a>
+          <article class="case-study-card">
+            <div class="case-study-image">
+              <div class="case-study-placeholder"><i class="fas fa-car"></i></div>
+            </div>
+            <div class="case-study-content">
+              <span class="case-study-tag">Computer Vision</span>
+              <h3 class="case-study-title">ANPR Supply Chain Security</h3>
+              <p class="case-study-description">
+                Developed an Automatic Number Plate Recognition system for Gujarat CMO to verify vehicles at
+                supply-chain checkpoints. Integrated YOLOv8 with OCR and implemented tamper-detection using
+                ML-based anomaly scoring.
+              </p>
+              <div class="case-study-metrics">
+                <div class="metric">
+                  <span class="metric-value">98%</span>
+                  <span class="metric-label">Recognition Accuracy</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">Real-time</span>
+                  <span class="metric-label">Processing</span>
+                </div>
               </div>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green transition-colors">
-              Graph-RAG Security Assistant
-            </h3>
-            <div class="text-slate mb-6 flex-grow">
-              <p>Security knowledge retrieval with provenance: Neo4j graph & vector DB with embeddings mapping answers to ISO 27001/NIST CSF controls.</p>
-            </div>
-            <div class="font-mono text-xs text-light-slate flex flex-wrap gap-2 mt-auto">
-              <span>Neo4j</span>
-              <span>FAISS</span>
-              <span>LangChain</span>
-            </div>
-          </div>
-
-          <!-- Project 4: LLM Q&A Assistant -->
-          <div class="card flex flex-col h-full group">
-            <div class="flex justify-between items-center mb-6">
-              <i class="far fa-folder fa-2x text-green"></i>
-              <div class="flex space-x-4">
-                <a href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence"
-                  target="_blank" class="text-light-slate hover:text-green">
-                  <i class="fab fa-github fa-lg"></i>
-                </a>
-                <a href="#" class="text-light-slate hover:text-green">
-                  <i class="fas fa-external-link-alt fa-lg"></i>
-                </a>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green transition-colors">
-              <a href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence"
-                target="_blank">LLM Q&A Assistant</a>
-            </h3>
-            <div class="text-slate mb-6 flex-grow">
-              <p>An open-source chatbot capable of answering questions from PDF, CSV, JSON, and image files with
-                persistence.</p>
-            </div>
-            <div class="font-mono text-xs text-light-slate flex space-x-3 mt-auto">
-              <span>Python</span>
-              <span>LangChain</span>
-              <span>LLM</span>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="card flex flex-col h-full group">
-            <div class="flex justify-between items-center mb-6">
-              <i class="far fa-folder fa-2x text-green"></i>
-              <div class="flex space-x-4">
-                <a href="https://github.com/kvmukilan/stock_prediction" target="_blank"
-                  class="text-light-slate hover:text-green">
-                  <i class="fab fa-github fa-lg"></i>
-                </a>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green transition-colors">
-              <a href="https://github.com/kvmukilan/stock_prediction" target="_blank">Stock Prediction LSTM</a>
-            </h3>
-            <div class="text-slate mb-6 flex-grow">
-              <p>Implemented LSTM neural networks to learn order dependence in sequence prediction problems for stock
-                market analysis.</p>
-            </div>
-            <div class="font-mono text-xs text-light-slate flex space-x-3 mt-auto">
-              <span>Python</span>
-              <span>Keras</span>
-              <span>Deep Learning</span>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="card flex flex-col h-full group">
-            <div class="flex justify-between items-center mb-6">
-              <i class="far fa-folder fa-2x text-green"></i>
-              <div class="flex space-x-4">
-                <a href="https://github.com/kvmukilan/Hairline-Removal" target="_blank"
-                  class="text-light-slate hover:text-green">
-                  <i class="fab fa-github fa-lg"></i>
-                </a>
-              </div>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green transition-colors">
-              <a href="https://github.com/kvmukilan/Hairline-Removal" target="_blank">Hairline Removal CNN</a>
-            </h3>
-            <div class="text-slate mb-6 flex-grow">
-              <p>A U-Net architecture based CNN model designed to remove hairlines from dermoscopic skin images for
-                better analysis.</p>
-            </div>
-            <div class="font-mono text-xs text-light-slate flex space-x-3 mt-auto">
-              <span>Python</span>
-              <span>OpenCV</span>
-              <span>U-Net</span>
-            </div>
-          </div>
+          </article>
 
         </div>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 container mx-auto px-4 sm:px-6 lg:px-8 reveal text-center">
-      <div class="max-w-2xl mx-auto">
-        <p class="text-green font-mono mb-4">04. What's Next?</p>
-        <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">Get In Touch</h2>
-        <p class="text-slate text-lg mb-12">
-          I'm currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is
-          always open!
-        </p>
-        <a href="mailto:kvmukilan@gmail.com" class="btn-primary text-base px-8 py-4">
-          Say Hello
-        </a>
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-content">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="contact-description">
+            I'm currently open to new opportunities in cybersecurity and AI. Whether you have a question,
+            a project idea, or just want to connect – feel free to reach out!
+          </p>
+          <a href="mailto:kvmukilan@gmail.com" class="btn btn-primary btn-large">
+            <i class="fas fa-envelope"></i> Say Hello
+          </a>
+          <div class="contact-links">
+            <a href="https://github.com/kvmukilan" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com/in/karmukilanv/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="mailto:kvmukilan@gmail.com"><i class="fas fa-envelope"></i> kvmukilan@gmail.com</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="py-6 text-center">
-    <div class="text-light-slate font-mono text-xs">
-      <a href="https://github.com/kvmukilan" target="_blank" class="hover:text-green">
-        Designed & Built by Mukilan
-      </a>
-    </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Designed & Built by Karmukilan V</p>
+    <p class="footer-note">© 2025 All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
