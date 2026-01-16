@@ -85,6 +85,12 @@ if (canvas) {
 
     function animateParticles() {
         requestAnimationFrame(animateParticles);
+
+        // Pause animation when tab is not visible (performance optimization)
+        if (document.hidden) {
+            return;
+        }
+
         ctx.clearRect(0, 0, innerWidth, innerHeight);
 
         for (let i = 0; i < particlesArray.length; i++) {
@@ -100,6 +106,13 @@ if (canvas) {
         initParticles();
     });
 
+    // Reinitialize particles when tab becomes visible again
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            initParticles();
+        }
+    });
+
     initParticles();
     animateParticles();
 }
@@ -109,7 +122,7 @@ if (canvas) {
    2. Typing Effect
    ========================================= */
 const typingElement = document.getElementById('typing-text');
-const phrases = ["I build things for the web.", "I create intelligent systems.", "I design user experiences."];
+const phrases = ["I secure intelligent systems.", "I build AI-powered security tools.", "I analyze threats with machine learning."];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
