@@ -1,229 +1,212 @@
-/* =========================================
-   1. Canvas Particle Network Background
-   ========================================= */
-const canvas = document.getElementById('canvas-bg');
-const ctx = canvas.getContext('2d');
+/* ========================================
+   Modern Portfolio - JavaScript
+   ======================================== */
 
-let particlesArray;
+// DOM Elements
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const navbar = document.querySelector('.navbar');
 
-// Validate canvas exists to avoid errors on pages without it
-if (canvas) {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+/* ========================================
+   1. Theme Toggle (Dark/Light Mode)
+   ======================================== */
 
-    class Particle {
-        constructor(x, y, directionX, directionY, size, color) {
-            this.x = x;
-            this.y = y;
-            this.directionX = directionX;
-            this.directionY = directionY;
-            this.size = size;
-            this.color = color;
-        }
-
-        // Method to draw individual particle
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = '#64ffda'; // Green color
-            ctx.fill();
-        }
-
-        // Check particle position, check mouse position, move the particle, draw the particle
-        update() {
-            // Check if particle is still within canvas
-            if (this.x > canvas.width || this.x < 0) {
-                this.directionX = -this.directionX;
-            }
-            if (this.y > canvas.height || this.y < 0) {
-                this.directionY = -this.directionY;
-            }
-
-            // Move particle
-            this.x += this.directionX;
-            this.y += this.directionY;
-
-            // Draw particle
-            this.draw();
-        }
-    }
-
-    function initParticles() {
-        particlesArray = [];
-        let numberOfParticles = (canvas.height * canvas.width) / 18000; // Reduced Density for performance
-        for (let i = 0; i < numberOfParticles; i++) {
-            let size = (Math.random() * 2) + 1;
-            let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-            let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-            let directionX = (Math.random() * 0.4) - 0.2;
-            let directionY = (Math.random() * 0.4) - 0.2;
-            let color = '#64ffda';
-
-            particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-        }
-    }
-
-    function connectParticles() {
-        let opacityValue = 1;
-        for (let a = 0; a < particlesArray.length; a++) {
-            for (let b = a; b < particlesArray.length; b++) {
-                let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
-                    ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-
-                if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                    opacityValue = 1 - (distance / 20000);
-                    ctx.strokeStyle = 'rgba(100, 255, 218,' + opacityValue * 0.15 + ')'; // Linking lines
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                    ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-
-    function animateParticles() {
-        requestAnimationFrame(animateParticles);
-
-        // Pause animation when tab is not visible (performance optimization)
-        if (document.hidden) {
-            return;
-        }
-
-        ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-        }
-        connectParticles();
-    }
-
-    // Resize event
-    window.addEventListener('resize', () => {
-        canvas.width = innerWidth;
-        canvas.height = innerHeight;
-        initParticles();
-    });
-
-    // Reinitialize particles when tab becomes visible again
-    document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) {
-            initParticles();
-        }
-    });
-
-    initParticles();
-    animateParticles();
+// Check for saved theme preference or default to dark
+function getThemePreference() {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    return savedTheme;
+  }
+  // Default to dark theme
+  return 'dark';
 }
 
+// Apply theme to document
+function applyTheme(theme) {
+  const html = document.documentElement;
 
-/* =========================================
-   2. Typing Effect
-   ========================================= */
-const typingElement = document.getElementById('typing-text');
-const phrases = ["I secure intelligent systems.", "I build AI-powered security tools.", "I analyze threats with machine learning."];
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typeSpeed = 100;
+  if (theme === 'dark') {
+    html.classList.add('dark');
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  } else {
+    html.classList.remove('dark');
+    themeIcon.classList.remove('fa-sun');
+    themeIcon.classList.add('fa-moon');
+  }
 
-function typeEffect() {
-    if (!typingElement) return;
-
-    const currentPhrase = phrases[phraseIndex];
-
-    if (isDeleting) {
-        typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-        typeSpeed = 50;
-    } else {
-        typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-        typeSpeed = 100;
-    }
-
-    if (!isDeleting && charIndex === currentPhrase.length) {
-        isDeleting = true;
-        typeSpeed = 2000; // Pause at end
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typeSpeed = 500;
-    }
-
-    setTimeout(typeEffect, typeSpeed);
+  localStorage.setItem('theme', theme);
 }
 
-document.addEventListener('DOMContentLoaded', typeEffect);
+// Initialize theme
+applyTheme(getThemePreference());
 
-
-/* =========================================
-   3. Magnetic Buttons
-   ========================================= */
-const magneticBtns = document.querySelectorAll('.magnetic-btn');
-
-magneticBtns.forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-        const position = btn.getBoundingClientRect();
-        const x = e.pageX - position.left - position.width / 2;
-        const y = e.pageY - position.top - position.height / 2;
-
-        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-    });
-
-    btn.addEventListener('mouseout', () => {
-        btn.style.transform = 'translate(0px, 0px)';
-    });
-});
-
-
-/* =========================================
-   4. Mobile Menu & Smooth Scroll (Legacy)
-   ========================================= */
-const mobileMenuButton = document.querySelector('button.mobile-menu-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+// Theme toggle click handler
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+  });
 }
+
+/* ========================================
+   2. Mobile Menu Toggle
+   ======================================== */
+
+if (mobileMenuBtn && mobileMenu) {
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+
+  // Close menu when clicking a link
+  const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+      mobileMenuBtn.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+  });
+}
+
+/* ========================================
+   3. Smooth Scrolling
+   ======================================== */
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
 
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth'
-            });
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-        }
-    });
+    if (targetId === '#') return;
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
 });
 
+/* ========================================
+   4. Navbar Scroll Effect
+   ======================================== */
 
-/* =========================================
-   5. Scroll Reveal
-   ========================================= */
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // Add shadow when scrolled
+  if (currentScroll > 10) {
+    navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.1)';
+  } else {
+    navbar.style.boxShadow = 'none';
+  }
+
+  lastScroll = currentScroll;
+});
+
+/* ========================================
+   5. Intersection Observer for Animations
+   ======================================== */
+
 const observerOptions = {
-    threshold: 0.1
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
+const fadeInObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      fadeInObserver.unobserve(entry.target);
+    }
+  });
 }, observerOptions);
 
-document.querySelectorAll('.reveal').forEach((element) => {
-    observer.observe(element);
+// Apply subtle fade-in to sections
+document.querySelectorAll('.section').forEach((section, index) => {
+  section.style.opacity = '0';
+  section.style.transform = 'translateY(20px)';
+  section.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+  fadeInObserver.observe(section);
+});
+
+/* ========================================
+   6. Active Navigation Link
+   ======================================== */
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+
+    if (window.pageYOffset >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+/* ========================================
+   7. Card Hover Effects (subtle)
+   ======================================== */
+
+const cards = document.querySelectorAll('.project-card, .experience-item, .case-study-card');
+
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'all 0.3s ease';
+  });
+});
+
+/* ========================================
+   8. Initialize on DOM Load
+   ======================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Remove loading state if any
+  document.body.classList.remove('loading');
+
+  // Trigger initial animations
+  setTimeout(() => {
+    document.querySelectorAll('.hero-content > *').forEach((el, i) => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    });
+  }, 100);
+});
+
+// Hero content initial state
+document.querySelectorAll('.hero-content > *').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
 });
