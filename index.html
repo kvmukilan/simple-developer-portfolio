@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Karmukilan V - Cybersecurity Analyst & AI Engineer Portfolio">
-  <meta name="keywords" content="Cybersecurity, AI, Machine Learning, VAPT, Python, LangChain, Security, NFSU">
+  <meta name="description" content="Karmukilan V — Cybersecurity Analyst & AI Engineer. VAPT, threat modeling, and AI-powered security tooling.">
+  <meta name="keywords" content="Cybersecurity, VAPT, Penetration Testing, AI Security, Machine Learning, Python, LangChain, NFSU">
+  <meta name="theme-color" content="#0a0f0d">
 
   <!-- Open Graph Tags -->
-  <meta property="og:title" content="Karmukilan V | Cybersecurity & AI Engineer">
-  <meta property="og:description" content="M.Tech in AI & Data Science (Cybersecurity Specialization) - Building secure intelligent systems">
+  <meta property="og:title" content="Karmukilan V | Cybersecurity & AI">
+  <meta property="og:description" content="Cybersecurity Analyst & AI Engineer — VAPT, threat modeling, and AI-powered security tools.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://muki-portfolio.vercel.app">
+
+  <!-- Favicon: terminal prompt glyph -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0f0d'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' fill='%2300e5a0'%3E%26gt;_%3C/text%3E%3C/svg%3E">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -29,32 +33,35 @@
 </head>
 
 <body>
-  <!-- Animated Background -->
-  <div class="bg-gradient"></div>
-  <div class="bg-grid"></div>
+  <!-- Background layers -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-scanlines" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
 
   <!-- Navbar -->
   <header class="navbar">
     <nav class="nav-container">
-      <a href="#" class="logo">
-        <span class="logo-text">KV</span>
-        <span class="logo-dot"></span>
+      <a href="#" class="logo" aria-label="Home">
+        <span class="logo-prompt">~/</span><span class="logo-text">kv</span><span class="logo-cursor"></span>
       </a>
 
       <div class="nav-links" id="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#about" class="nav-link">about</a>
+        <a href="#skills" class="nav-link">skills</a>
+        <a href="#experience" class="nav-link">experience</a>
+        <a href="#projects" class="nav-link">projects</a>
+        <a href="#proof" class="nav-link">proof</a>
+        <a href="#writeups" class="nav-link">writeups</a>
       </div>
 
       <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <i class="fas fa-moon" id="theme-icon"></i>
+        <button class="terminal-open-btn" id="terminal-open-btn" aria-label="Open terminal" title="Open terminal (~)">
+          <span>&gt;_</span>
         </button>
-        <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" class="btn btn-primary btn-glow">
-          <span>Resume</span>
-          <i class="fas fa-arrow-right"></i>
+        <!-- ✏️ EDIT: replace with your latest resume link -->
+        <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary">
+          <span>resume.pdf</span>
+          <i class="fas fa-arrow-up-right-from-square"></i>
         </a>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
           <span class="hamburger"></span>
@@ -64,11 +71,15 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
-      <a href="#about" class="mobile-link">About</a>
-      <a href="#experience" class="mobile-link">Experience</a>
-      <a href="#projects" class="mobile-link">Projects</a>
-      <a href="#contact" class="mobile-link">Contact</a>
-      <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" class="btn btn-primary btn-glow mobile-resume">Resume</a>
+      <a href="#about" class="mobile-link">about</a>
+      <a href="#skills" class="mobile-link">skills</a>
+      <a href="#experience" class="mobile-link">experience</a>
+      <a href="#projects" class="mobile-link">projects</a>
+      <a href="#proof" class="mobile-link">proof</a>
+      <a href="#writeups" class="mobile-link">writeups</a>
+      <a href="#contact" class="mobile-link">contact</a>
+      <!-- ✏️ EDIT: same resume link as above -->
+      <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary mobile-resume">resume.pdf</a>
     </div>
   </header>
 
@@ -76,53 +87,58 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
       <div class="hero-content">
-        <div class="hero-badge animate-float">
+        <div class="hero-badge animate-in">
           <span class="status-dot"></span>
-          <span>Available for opportunities</span>
+          <span class="status-text">[STATUS: OPEN_TO_WORK]</span>
         </div>
 
-        <h1 class="hero-name animate-in">
-          <span class="greeting">Hi, I'm</span>
-          <span class="name-highlight">Karmukilan V.</span>
+        <h1 class="hero-name animate-in delay-1">
+          Karmukilan&nbsp;V<span class="accent-dot">.</span>
         </h1>
-
-        <h2 class="hero-title animate-in delay-1">
-          I build <span class="gradient-text">secure AI systems</span>
-        </h2>
-
-        <p class="hero-description animate-in delay-2">
-          Cybersecurity Analyst & AI Engineer pursuing M.Tech at NFSU.<br>
-          Specializing in VAPT, threat modeling, and AI-powered security tools.
+        <p class="hero-role animate-in delay-1">
+          Cybersecurity Analyst <span class="role-sep">//</span> AI Engineer
         </p>
 
+        <!-- Hero terminal: typed sequence lives in script.js (HERO_SEQUENCE) -->
+        <div class="hero-terminal console-window animate-in delay-2" aria-label="Terminal introduction">
+          <div class="console-titlebar">
+            <span class="console-dot red"></span>
+            <span class="console-dot yellow"></span>
+            <span class="console-dot green"></span>
+            <span class="console-title">muki@sec:~</span>
+          </div>
+          <div class="console-body" id="hero-terminal-body">
+            <noscript>
+              <p>$ whoami<br>karmukilan_v — cybersecurity analyst &amp; ai engineer</p>
+            </noscript>
+          </div>
+        </div>
+
         <div class="hero-cta animate-in delay-3">
-          <a href="#projects" class="btn btn-primary btn-large btn-glow">
-            <span>View Projects</span>
+          <a href="#projects" class="btn btn-primary btn-large">
+            <span>./view_projects</span>
             <i class="fas fa-arrow-down"></i>
           </a>
           <a href="#contact" class="btn btn-ghost btn-large">
-            <span>Get in Touch</span>
+            <span>get in touch</span>
           </a>
         </div>
 
         <div class="hero-social animate-in delay-4">
-          <a href="https://github.com/kvmukilan" target="_blank" class="social-link" aria-label="GitHub">
+          <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://linkedin.com/in/karmukilanv/" target="_blank" class="social-link" aria-label="LinkedIn">
+          <a href="https://linkedin.com/in/karmukilanv/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
             <i class="fab fa-linkedin-in"></i>
           </a>
           <a href="mailto:kvmukilan@gmail.com" class="social-link" aria-label="Email">
             <i class="fas fa-envelope"></i>
           </a>
         </div>
-      </div>
 
-      <div class="scroll-indicator">
-        <div class="mouse">
-          <div class="wheel"></div>
-        </div>
-        <span>Scroll to explore</span>
+        <p class="terminal-hint animate-in delay-4">
+          press <kbd>~</kbd> anywhere to open the terminal
+        </p>
       </div>
     </section>
 
@@ -130,70 +146,37 @@
     <section id="about" class="section">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">About</span>
+          <span class="section-label">~/about</span>
           <h2 class="section-title">Who I am</h2>
         </div>
 
         <div class="about-grid">
           <div class="about-content reveal">
+            <!-- ✏️ EDIT: your about text -->
             <p class="about-lead">
-              I'm a <span class="highlight">cybersecurity enthusiast</span> and <span class="highlight">AI engineer</span>
-              passionate about building systems that are both intelligent and secure.
+              I'm a <span class="highlight">cybersecurity analyst</span> and <span class="highlight">AI engineer</span>
+              who builds systems that are both intelligent and hard to break.
             </p>
             <p>
-              Currently pursuing <strong>M.Tech in AI & Data Science (Cybersecurity Specialization)</strong> at
-              National Forensic Sciences University, I bridge the gap between offensive security and machine learning.
+              Currently pursuing an <strong>M.Tech in AI &amp; Data Science (Cybersecurity Specialization)</strong> at
+              National Forensic Sciences University, I work at the intersection of offensive security and machine learning.
             </p>
             <p>
-              My experience spans from conducting VAPT assessments to building AI-powered security tools.
-              I believe the future of cybersecurity lies in intelligent automation.
+              My experience spans VAPT assessments with reproducible PoCs to building AI-powered security tooling.
+              I believe the future of security operations is intelligent automation — and I'm building toward it.
             </p>
-
-            <div class="tech-stack">
-              <h3>Tech Stack</h3>
-              <div class="stack-categories">
-                <div class="stack-category">
-                  <span class="category-label"><i class="fas fa-shield-alt"></i> Security</span>
-                  <div class="stack-tags">
-                    <span class="tag">Burp Suite</span>
-                    <span class="tag">Wireshark</span>
-                    <span class="tag">MobSF</span>
-                    <span class="tag">Frida</span>
-                    <span class="tag">Nmap</span>
-                  </div>
-                </div>
-                <div class="stack-category">
-                  <span class="category-label"><i class="fas fa-brain"></i> AI/ML</span>
-                  <div class="stack-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">LangChain</span>
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">Neo4j</span>
-                    <span class="tag">FAISS</span>
-                  </div>
-                </div>
-                <div class="stack-category">
-                  <span class="category-label"><i class="fas fa-tools"></i> Tools</span>
-                  <div class="stack-tags">
-                    <span class="tag">Docker</span>
-                    <span class="tag">Git</span>
-                    <span class="tag">Azure</span>
-                    <span class="tag">Linux</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="about-visual reveal">
-            <div class="profile-card tilt-card">
+            <div class="profile-card console-panel tilt-card" data-panel-label="id_card.png">
               <div class="profile-image-wrapper">
                 <img src="profile.png" alt="Karmukilan V" class="profile-image">
-                <div class="profile-glow"></div>
               </div>
               <div class="profile-info">
-                <span class="profile-location"><i class="fas fa-map-marker-alt"></i> India</span>
-                <span class="profile-education"><i class="fas fa-graduation-cap"></i> NFSU</span>
+                <span class="profile-row"><span class="profile-key">name:</span> Karmukilan V</span>
+                <span class="profile-row"><span class="profile-key">base:</span> India</span>
+                <span class="profile-row"><span class="profile-key">edu:</span> NFSU · M.Tech</span>
+                <span class="profile-row"><span class="profile-key">focus:</span> VAPT · AI-Sec</span>
               </div>
             </div>
           </div>
@@ -201,32 +184,103 @@
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section section-alt">
+    <!-- Skills Matrix -->
+    <section id="skills" class="section section-alt">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">Experience</span>
+          <span class="section-label">~/skills</span>
+          <h2 class="section-title">Skills matrix</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- ✏️ EDIT: tune skill tags in each category -->
+          <div class="skill-panel console-panel reveal" data-panel-label="offensive.cfg">
+            <div class="skill-panel-header">
+              <i class="fas fa-crosshairs"></i>
+              <h3>Offensive</h3>
+            </div>
+            <div class="stack-tags">
+              <span class="tag">Burp Suite</span>
+              <span class="tag">Nmap</span>
+              <span class="tag">MobSF</span>
+              <span class="tag">Frida</span>
+              <span class="tag">Fuzzing</span>
+              <span class="tag">Android VAPT</span>
+              <span class="tag">Web VAPT</span>
+            </div>
+          </div>
+
+          <div class="skill-panel console-panel reveal" data-panel-label="defensive.cfg">
+            <div class="skill-panel-header">
+              <i class="fas fa-shield-halved"></i>
+              <h3>Defensive</h3>
+            </div>
+            <div class="stack-tags">
+              <span class="tag">Wireshark</span>
+              <span class="tag">Scapy</span>
+              <span class="tag">Threat Modeling</span>
+              <span class="tag">MITRE ATT&amp;CK</span>
+              <span class="tag">ISO 27001</span>
+              <span class="tag">NIST CSF</span>
+            </div>
+          </div>
+
+          <div class="skill-panel console-panel reveal" data-panel-label="ai_sec.cfg">
+            <div class="skill-panel-header">
+              <i class="fas fa-brain"></i>
+              <h3>AI-Security</h3>
+            </div>
+            <div class="stack-tags">
+              <span class="tag">Python</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Neo4j</span>
+              <span class="tag">FAISS</span>
+              <span class="tag">Graph-RAG</span>
+              <span class="tag">YOLOv8</span>
+            </div>
+          </div>
+
+          <div class="skill-panel console-panel reveal" data-panel-label="tooling.cfg">
+            <div class="skill-panel-header">
+              <i class="fas fa-screwdriver-wrench"></i>
+              <h3>Tooling</h3>
+            </div>
+            <div class="stack-tags">
+              <span class="tag">Linux</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Git</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Bash</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">~/experience</span>
           <h2 class="section-title">Where I've worked</h2>
         </div>
 
         <div class="experience-timeline">
           <div class="timeline-line"></div>
 
-          <div class="experience-card tilt-card reveal">
+          <div class="experience-card reveal">
             <div class="experience-dot current"></div>
-            <div class="experience-content glass-card">
+            <div class="experience-content console-panel tilt-card" data-panel-label="abb_2025.log">
               <div class="experience-header">
                 <div class="experience-meta">
-                  <h3 class="experience-role">Cybersecurity & AI Intern</h3>
+                  <h3 class="experience-role">Cybersecurity &amp; AI Intern</h3>
                   <span class="experience-company">ABB (CDEC – Electrification)</span>
                 </div>
-                <span class="experience-date">
-                  <i class="far fa-calendar"></i>
-                  Jul 2025 - Present
-                </span>
+                <span class="experience-date">Jul 2025 → present</span>
               </div>
               <ul class="experience-points">
-                <li>Authored <span class="metric">2 VAPT reports</span> (Android & Web) with reproducible PoCs</li>
+                <li>Authored <span class="metric">2 VAPT reports</span> (Android &amp; Web) with reproducible PoCs</li>
                 <li>Built <span class="metric">AI-assisted PCAP analyzer</span> for crash-inducing payload detection</li>
                 <li>Developed <span class="metric">Graph-RAG pipeline</span> with Neo4j + Azure OpenAI embeddings</li>
               </ul>
@@ -236,18 +290,15 @@
             </div>
           </div>
 
-          <div class="experience-card tilt-card reveal">
+          <div class="experience-card reveal">
             <div class="experience-dot"></div>
-            <div class="experience-content glass-card">
+            <div class="experience-content console-panel tilt-card" data-panel-label="cmo_2024.log">
               <div class="experience-header">
                 <div class="experience-meta">
-                  <h3 class="experience-role">Cybersecurity & AI Intern</h3>
+                  <h3 class="experience-role">Cybersecurity &amp; AI Intern</h3>
                   <span class="experience-company">CMO, Gujarat – AI Task Force</span>
                 </div>
-                <span class="experience-date">
-                  <i class="far fa-calendar"></i>
-                  Oct 2024 - Dec 2024
-                </span>
+                <span class="experience-date">Oct 2024 → Dec 2024</span>
               </div>
               <ul class="experience-points">
                 <li>Built <span class="metric">ANPR system</span> using YOLOv8 + OCR for supply-chain verification</li>
@@ -260,18 +311,15 @@
             </div>
           </div>
 
-          <div class="experience-card tilt-card reveal">
+          <div class="experience-card reveal">
             <div class="experience-dot"></div>
-            <div class="experience-content glass-card">
+            <div class="experience-content console-panel tilt-card" data-panel-label="hp_2023.log">
               <div class="experience-header">
                 <div class="experience-meta">
                   <h3 class="experience-role">AI Intern</h3>
                   <span class="experience-company">HP</span>
                 </div>
-                <span class="experience-date">
-                  <i class="far fa-calendar"></i>
-                  Jun 2023 - Aug 2023
-                </span>
+                <span class="experience-date">Jun 2023 → Aug 2023</span>
               </div>
               <ul class="experience-points">
                 <li>Built onboarding chatbot using <span class="metric">LangChain</span> for company documents</li>
@@ -288,134 +336,144 @@
     </section>
 
     <!-- Projects Section - Bento Grid -->
-    <section id="projects" class="section">
+    <section id="projects" class="section section-alt">
       <div class="container">
         <div class="section-header">
-          <span class="section-label">Projects</span>
+          <span class="section-label">./projects</span>
           <h2 class="section-title">What I've built</h2>
         </div>
 
         <div class="bento-grid">
           <!-- Featured Project - Large -->
-          <article class="bento-item bento-large project-card tilt-card reveal">
-            <div class="project-badge">Featured</div>
+          <article class="bento-item bento-large project-card console-panel tilt-card reveal" data-panel-label="featured">
+            <div class="project-chips">
+              <span class="chip chip-alert">[AI-SEC]</span>
+              <span class="chip">[MITRE]</span>
+            </div>
             <div class="project-icon-large">
-              <i class="fas fa-shield-alt"></i>
+              <i class="fas fa-shield-halved"></i>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Agentic Security Analyst</h3>
+              <h3 class="project-title">agentic_security_analyst/</h3>
               <p class="project-description">
                 AI-powered security analyst using LangChain tool-use to orchestrate vulnerability scans,
-                retrieve logs, and draft triage notes. Outputs aligned to MITRE ATT&CK framework for
+                retrieve logs, and draft triage notes. Outputs aligned to the MITRE ATT&amp;CK framework for
                 standardized threat intelligence.
               </p>
               <div class="project-tags">
-                <span>Python</span><span>LangChain</span><span>MITRE ATT&CK</span><span>AI Security</span>
+                <span>Python</span><span>LangChain</span><span>MITRE ATT&amp;CK</span><span>AI Security</span>
               </div>
             </div>
             <div class="project-links">
-              <a href="https://github.com/kvmukilan" target="_blank" class="project-link">
+              <!-- ✏️ EDIT: link to the actual repo when public -->
+              <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link">
                 <i class="fab fa-github"></i>
-                <span>Code</span>
+                <span>source</span>
               </a>
             </div>
-            <div class="project-bg-pattern"></div>
           </article>
 
           <!-- Medium Project -->
-          <article class="bento-item bento-medium project-card tilt-card reveal">
+          <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
+            <div class="project-chips">
+              <span class="chip chip-alert">[NET-SEC]</span>
+            </div>
             <div class="project-icon">
               <i class="fas fa-network-wired"></i>
             </div>
-            <h3 class="project-title">AI-PCAP Triage</h3>
+            <h3 class="project-title">ai_pcap_triage/</h3>
             <p class="project-description">
               Analyzes fuzzing-session PCAPs to surface suspicious sessions via timing gaps, TCP RST bursts, and entropy shifts.
             </p>
             <div class="project-tags">
               <span>Scapy</span><span>Wireshark</span><span>ML</span>
             </div>
-            <a href="https://github.com/kvmukilan" target="_blank" class="project-link-icon">
+            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
             </a>
           </article>
 
           <!-- Medium Project -->
-          <article class="bento-item bento-medium project-card tilt-card reveal">
-            <div class="project-icon">
-              <i class="fas fa-project-diagram"></i>
+          <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
+            <div class="project-chips">
+              <span class="chip">[GRC]</span>
             </div>
-            <h3 class="project-title">Graph-RAG Assistant</h3>
+            <div class="project-icon">
+              <i class="fas fa-diagram-project"></i>
+            </div>
+            <h3 class="project-title">graph_rag_assistant/</h3>
             <p class="project-description">
-              Security knowledge retrieval with Neo4j graph & vector DB, mapping to ISO 27001/NIST CSF controls.
+              Security knowledge retrieval with Neo4j graph &amp; vector DB, mapping to ISO 27001/NIST CSF controls.
             </p>
             <div class="project-tags">
               <span>Neo4j</span><span>FAISS</span><span>LangChain</span>
             </div>
-            <a href="https://github.com/kvmukilan" target="_blank" class="project-link-icon">
+            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
             </a>
           </article>
 
           <!-- Small Project -->
-          <article class="bento-item bento-small project-card tilt-card reveal">
+          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
             <div class="project-icon-small">
               <i class="fas fa-robot"></i>
             </div>
-            <h3 class="project-title-small">LLM Q&A Assistant</h3>
+            <h3 class="project-title-small">llm_qna_assistant/</h3>
             <div class="project-tags-small">
               <span>LangChain</span><span>LLM</span>
             </div>
-            <a href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence" target="_blank" class="project-link-icon">
+            <a href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
             </a>
           </article>
 
           <!-- Small Project -->
-          <article class="bento-item bento-small project-card tilt-card reveal">
+          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
             <div class="project-icon-small">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3 class="project-title-small">Stock LSTM</h3>
+            <h3 class="project-title-small">stock_lstm/</h3>
             <div class="project-tags-small">
               <span>Keras</span><span>Deep Learning</span>
             </div>
-            <a href="https://github.com/kvmukilan/stock_prediction" target="_blank" class="project-link-icon">
+            <a href="https://github.com/kvmukilan/stock_prediction" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
             </a>
           </article>
 
           <!-- Small Project -->
-          <article class="bento-item bento-small project-card tilt-card reveal">
+          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
             <div class="project-icon-small">
               <i class="fas fa-microscope"></i>
             </div>
-            <h3 class="project-title-small">Hairline CNN</h3>
+            <h3 class="project-title-small">hairline_cnn/</h3>
             <div class="project-tags-small">
               <span>U-Net</span><span>OpenCV</span>
             </div>
-            <a href="https://github.com/kvmukilan/Hairline-Removal" target="_blank" class="project-link-icon">
+            <a href="https://github.com/kvmukilan/Hairline-Removal" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
             </a>
           </article>
 
           <!-- Stats Card -->
-          <article class="bento-item bento-stats glass-card reveal">
+          <article class="bento-item bento-stats console-panel reveal" data-panel-label="stats.json">
             <div class="stats-grid">
+              <!-- ✏️ EDIT: keep these numbers honest and current -->
               <div class="stat-item">
                 <span class="stat-value">12+</span>
-                <span class="stat-label">Vulnerabilities Found</span>
+                <span class="stat-label">Vulns found</span>
               </div>
               <div class="stat-item">
                 <span class="stat-value">3</span>
-                <span class="stat-label">VAPT Reports</span>
+                <span class="stat-label">VAPT reports</span>
               </div>
               <div class="stat-item">
                 <span class="stat-value">6+</span>
-                <span class="stat-label">AI Projects</span>
+                <span class="stat-label">AI projects</span>
               </div>
               <div class="stat-item">
                 <span class="stat-value">98%</span>
-                <span class="stat-label">ANPR Accuracy</span>
+                <span class="stat-label">ANPR accuracy</span>
               </div>
             </div>
           </article>
@@ -423,35 +481,151 @@
       </div>
     </section>
 
+    <!-- Proof of Skill: Certifications + CTF -->
+    <section id="proof" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">~/proof-of-skill</span>
+          <h2 class="section-title">Certs &amp; hands-on practice</h2>
+        </div>
+
+        <div class="proof-grid">
+          <div class="proof-column reveal">
+            <h3 class="proof-subtitle"><i class="fas fa-certificate"></i> Certifications</h3>
+            <!-- ✏️ EDIT: replace with your real certifications (name, issuer, status/date) -->
+            <div class="cert-list">
+              <div class="cert-card console-panel">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                  <span class="cert-name">CompTIA Security+</span>
+                  <span class="cert-issuer">CompTIA</span>
+                </div>
+                <span class="chip chip-progress">in_progress</span>
+              </div>
+              <div class="cert-card console-panel">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                  <span class="cert-name">eJPT</span>
+                  <span class="cert-issuer">INE Security</span>
+                </div>
+                <span class="chip chip-progress">planned</span>
+              </div>
+              <div class="cert-card console-panel">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                  <span class="cert-name">Your certification here</span>
+                  <span class="cert-issuer">Issuer</span>
+                </div>
+                <span class="chip chip-done">2025</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proof-column reveal">
+            <h3 class="proof-subtitle"><i class="fas fa-flag"></i> CTF &amp; labs</h3>
+            <!-- ✏️ EDIT: your real TryHackMe/HackTheBox/CTF stats + profile links -->
+            <div class="ctf-grid">
+              <a href="https://tryhackme.com" target="_blank" rel="noopener" class="ctf-card console-panel">
+                <span class="ctf-platform">TryHackMe</span>
+                <span class="ctf-stat">Top N%</span>
+                <span class="ctf-detail">XX rooms completed</span>
+              </a>
+              <a href="https://hackthebox.com" target="_blank" rel="noopener" class="ctf-card console-panel">
+                <span class="ctf-platform">HackTheBox</span>
+                <span class="ctf-stat">Rank</span>
+                <span class="ctf-detail">XX boxes owned</span>
+              </a>
+              <div class="ctf-card console-panel">
+                <span class="ctf-platform">CTF events</span>
+                <span class="ctf-stat">XX played</span>
+                <span class="ctf-detail">best placement: #XX</span>
+              </div>
+              <div class="ctf-card console-panel">
+                <span class="ctf-platform">PortSwigger</span>
+                <span class="ctf-stat">XX labs</span>
+                <span class="ctf-detail">Web Security Academy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Writeups Section -->
+    <section id="writeups" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">./writeups</span>
+          <h2 class="section-title">Security writeups</h2>
+        </div>
+
+        <div class="writeups-grid">
+          <!-- ✏️ EDIT: link these to your real writeups / blog posts -->
+          <a href="#" class="writeup-card console-panel tilt-card reveal">
+            <span class="writeup-date">$ cat writeup_01.md</span>
+            <h3 class="writeup-title">Your first writeup title</h3>
+            <p class="writeup-excerpt">
+              One-line summary of what you broke, found, or built — e.g. "Chaining an IDOR with weak session
+              handling on a lab target."
+            </p>
+            <div class="writeup-tags">
+              <span>web</span><span>idor</span>
+            </div>
+            <span class="writeup-read">read →</span>
+          </a>
+
+          <a href="#" class="writeup-card console-panel tilt-card reveal">
+            <span class="writeup-date">$ cat writeup_02.md</span>
+            <h3 class="writeup-title">Your second writeup title</h3>
+            <p class="writeup-excerpt">
+              One-line summary — e.g. "Reversing an Android app's cert pinning with Frida in 30 minutes."
+            </p>
+            <div class="writeup-tags">
+              <span>android</span><span>frida</span>
+            </div>
+            <span class="writeup-read">read →</span>
+          </a>
+
+          <a href="#" class="writeup-card console-panel tilt-card reveal">
+            <span class="writeup-date">$ cat writeup_03.md</span>
+            <h3 class="writeup-title">Your third writeup title</h3>
+            <p class="writeup-excerpt">
+              One-line summary — e.g. "Building an LLM agent that triages PCAPs faster than I do."
+            </p>
+            <div class="writeup-tags">
+              <span>ai-sec</span><span>pcap</span>
+            </div>
+            <span class="writeup-read">read →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
+    <section id="contact" class="section">
       <div class="container">
         <div class="contact-wrapper reveal">
-          <div class="contact-content glass-card">
-            <span class="section-label">Contact</span>
+          <div class="contact-content console-panel" data-panel-label="contact.sh">
+            <span class="section-label">~/contact</span>
             <h2 class="contact-title">Let's work together</h2>
             <p class="contact-description">
-              I'm currently open to new opportunities in cybersecurity and AI.
-              Whether it's a full-time role, internship, or collaboration – let's connect!
+              I'm currently open to opportunities in cybersecurity and AI —
+              full-time roles, internships, or collaboration.
             </p>
 
-            <a href="mailto:kvmukilan@gmail.com" class="btn btn-primary btn-large btn-glow contact-btn">
+            <a href="mailto:kvmukilan@gmail.com" class="btn btn-primary btn-large contact-btn">
               <i class="fas fa-paper-plane"></i>
-              <span>Send me an email</span>
+              <span>send_mail --to kvmukilan@gmail.com</span>
             </a>
 
             <div class="contact-links">
-              <a href="https://github.com/kvmukilan" target="_blank" class="contact-link">
+              <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="contact-link">
                 <i class="fab fa-github"></i>
-                <span>GitHub</span>
+                <span>github/kvmukilan</span>
               </a>
-              <a href="https://linkedin.com/in/karmukilanv/" target="_blank" class="contact-link">
+              <a href="https://linkedin.com/in/karmukilanv/" target="_blank" rel="noopener" class="contact-link">
                 <i class="fab fa-linkedin-in"></i>
-                <span>LinkedIn</span>
-              </a>
-              <a href="mailto:kvmukilan@gmail.com" class="contact-link">
-                <i class="fas fa-envelope"></i>
-                <span>kvmukilan@gmail.com</span>
+                <span>in/karmukilanv</span>
               </a>
             </div>
           </div>
@@ -464,11 +638,29 @@
   <footer class="footer">
     <div class="container">
       <p class="footer-text">
-        Designed & Built by <span class="gradient-text">Karmukilan V</span>
+        <span class="footer-prompt">$</span> echo "designed &amp; built by <span class="highlight">Karmukilan V</span>"
       </p>
-      <p class="footer-note">© 2025 • Made with passion</p>
+      <p class="footer-note">© 2025 · no trackers, no cookies, just HTML</p>
     </div>
   </footer>
+
+  <!-- Interactive Terminal Overlay -->
+  <div class="terminal-overlay" id="terminal-overlay" role="dialog" aria-modal="true" aria-label="Interactive terminal" hidden>
+    <div class="terminal-window console-window">
+      <div class="console-titlebar">
+        <span class="console-dot red"></span>
+        <span class="console-dot yellow"></span>
+        <span class="console-dot green"></span>
+        <span class="console-title">visitor@muki-portfolio:~</span>
+        <button class="terminal-close" id="terminal-close" aria-label="Close terminal">✕</button>
+      </div>
+      <div class="terminal-output" id="terminal-output"></div>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt">$</span>
+        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command input">
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
