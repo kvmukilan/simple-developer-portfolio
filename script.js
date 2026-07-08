@@ -312,10 +312,10 @@ function termPrintLink(label, url) {
 /* Page sections `cd` can jump to, and repos `open` can launch. */
 const SECTIONS = ['about', 'skills', 'experience', 'projects', 'proof', 'contact'];
 const REPOS = {
-  // ✏️ EDIT: point these at the real repos as they go public
-  soc_gpt: SITE.github,
-  ot_attack_simulator: SITE.github,
-  ics_cve_scanner: SITE.github,
+  soc_gpt: 'https://github.com/kvmukilan/soc-gpt',
+  ot_attack_simulator: 'https://github.com/kvmukilan/ot-digital-twin',
+  ics_cve_scanner: 'https://github.com/kvmukilan/ics-supply-chain-scanner',
+  // ✏️ EDIT: no public repo yet — these fall back to the profile
   kabini_rag: SITE.github,
   ai_pcap_triage: SITE.github,
   anpr_yolov8: SITE.github,
