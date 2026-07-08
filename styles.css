@@ -28,6 +28,7 @@
 
   /* Fonts */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 
   /* Spacing */
@@ -168,6 +169,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .section-title {
+  font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
   color: var(--text-primary);
@@ -568,6 +570,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .hero-name {
+  font-family: var(--font-display);
   font-size: clamp(42px, 8vw, 74px);
   font-weight: 800;
   color: var(--text-primary);
@@ -685,6 +688,7 @@ html.js .reveal.visible {
 .about-content strong { color: var(--text-primary); }
 
 .about-lead {
+  font-family: var(--font-display);
   font-size: 21px;
   line-height: 1.6;
   color: var(--text-primary);
@@ -846,6 +850,7 @@ html.js .reveal.visible {
 }
 
 .experience-role {
+  font-family: var(--font-display);
   font-size: 18.5px;
   font-weight: 600;
   color: var(--text-primary);
@@ -912,15 +917,17 @@ html.js .reveal.visible {
 
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(150px, auto);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
+/* Layout: featured spans 2 cols × 2 rows; the two medium cards stack
+   beside it; three small cards share a row; stats runs full width. */
+.bento-item { min-width: 0; }
 .bento-large { grid-column: span 2; grid-row: span 2; }
-.bento-medium { grid-column: span 2; }
+.bento-medium { grid-column: span 1; }
 .bento-small { grid-column: span 1; }
-.bento-stats { grid-column: span 2; }
+.bento-stats { grid-column: 1 / -1; }
 
 .project-card {
   padding: 26px;
@@ -1007,6 +1014,44 @@ html.js .reveal.visible {
   gap: 6px;
 }
 
+.project-description-small {
+  font-size: 13px;
+  flex-grow: 1;
+}
+
+/* Featured card: sample terminal output */
+.project-demo {
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.9;
+  background: rgba(4, 10, 8, 0.7);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 6px 0 10px;
+  overflow-x: auto;
+}
+
+.demo-line { white-space: nowrap; }
+.demo-prompt { color: var(--accent); font-weight: 700; }
+.demo-cmd { color: var(--text-primary); }
+.demo-out { color: var(--text-muted); }
+.demo-ok { color: var(--accent); }
+
+/* Featured card: let the content column absorb extra height between
+   the description and the demo block instead of below the tags */
+.bento-large .project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.bento-large .project-description { flex-grow: 0; }
+.bento-large .project-demo { margin: 0; flex-grow: 1; }
+
 .project-links { margin-top: auto; }
 
 .project-link {
@@ -1032,12 +1077,12 @@ html.js .reveal.visible {
 
 .project-link-icon:hover { color: var(--accent); }
 
-/* Stats card */
-.bento-stats { padding: 26px; }
+/* Stats card — full-width strip */
+.bento-stats { padding: 28px 26px; }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px 24px;
   height: 100%;
   align-content: center;
@@ -1046,6 +1091,12 @@ html.js .reveal.visible {
 .stat-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-item + .stat-item {
+  border-left: 1px solid var(--border-soft);
 }
 
 .stat-value {
@@ -1167,65 +1218,15 @@ html.js .reveal.visible {
   color: var(--text-secondary);
 }
 
-/* ========================================
-   Writeups
-   ======================================== */
-
-.writeups-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.writeup-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 24px 24px 22px;
-  text-decoration: none;
-}
-
-.writeup-date {
+.proof-note {
+  margin-top: 16px;
   font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--accent);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  padding-left: 14px;
+  border-left: 2px solid var(--accent-dim);
 }
-
-.writeup-title {
-  font-size: 17.5px;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.4;
-}
-
-.writeup-excerpt {
-  font-size: 14px;
-  flex-grow: 1;
-}
-
-.writeup-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.writeup-tags span {
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  padding: 2px 9px;
-  border-radius: 5px;
-  color: var(--accent-2);
-  border: 1px solid rgba(34, 211, 238, 0.25);
-}
-
-.writeup-read {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--accent);
-  transition: transform var(--transition-fast);
-}
-
-.writeup-card:hover .writeup-read { transform: translateX(4px); }
 
 /* ========================================
    Contact
@@ -1242,6 +1243,7 @@ html.js .reveal.visible {
 }
 
 .contact-title {
+  font-family: var(--font-display);
   font-size: clamp(26px, 4vw, 36px);
   font-weight: 700;
   color: var(--text-primary);
@@ -1399,7 +1401,11 @@ html.js .reveal.visible {
   .bento-grid { grid-template-columns: repeat(2, 1fr); }
   .bento-large { grid-column: span 2; grid-row: auto; }
   .bento-medium { grid-column: span 1; }
-  .bento-stats { grid-column: span 2; }
+  .bento-small { grid-column: span 1; }
+  .bento-stats { grid-column: 1 / -1; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(odd) { border-left: none; }
 }
 
 @media (max-width: 860px) {
@@ -1417,14 +1423,15 @@ html.js .reveal.visible {
 
   .skills-grid { grid-template-columns: 1fr; }
   .proof-grid { grid-template-columns: 1fr; }
-  .writeups-grid { grid-template-columns: 1fr; }
 
   .experience-header { padding-right: 0; }
 }
 
 @media (max-width: 560px) {
   .bento-grid { grid-template-columns: 1fr; }
-  .bento-large, .bento-medium, .bento-small, .bento-stats { grid-column: span 1; }
+  .bento-large, .bento-medium, .bento-small { grid-column: span 1; }
+
+  .stats-grid { gap: 22px 16px; }
 
   .ctf-grid { grid-template-columns: 1fr; }
 

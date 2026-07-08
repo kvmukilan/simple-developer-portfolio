@@ -21,7 +21,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -51,7 +51,7 @@
         <a href="#experience" class="nav-link">experience</a>
         <a href="#projects" class="nav-link">projects</a>
         <a href="#proof" class="nav-link">proof</a>
-        <a href="#writeups" class="nav-link">writeups</a>
+        <a href="#contact" class="nav-link">contact</a>
       </div>
 
       <div class="nav-actions">
@@ -76,7 +76,6 @@
       <a href="#experience" class="mobile-link">experience</a>
       <a href="#projects" class="mobile-link">projects</a>
       <a href="#proof" class="mobile-link">proof</a>
-      <a href="#writeups" class="mobile-link">writeups</a>
       <a href="#contact" class="mobile-link">contact</a>
       <!-- ✏️ EDIT: same resume link as above -->
       <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary mobile-resume">resume.pdf</a>
@@ -96,7 +95,7 @@
           Karmukilan&nbsp;V<span class="accent-dot">.</span>
         </h1>
         <p class="hero-role animate-in delay-1">
-          Cybersecurity Analyst <span class="role-sep">//</span> AI Engineer
+          VAPT Engineer <span class="role-sep">//</span> OT/ICS &amp; AI Security
         </p>
 
         <!-- Hero terminal: typed sequence lives in script.js (HERO_SEQUENCE) -->
@@ -152,18 +151,21 @@
 
         <div class="about-grid">
           <div class="about-content reveal">
-            <!-- ✏️ EDIT: your about text -->
             <p class="about-lead">
-              I'm a <span class="highlight">cybersecurity analyst</span> and <span class="highlight">AI engineer</span>
-              who builds systems that are both intelligent and hard to break.
+              I'm a <span class="highlight">VAPT engineer</span> who breaks live industrial devices for a living —
+              then builds the <span class="highlight">AI tooling</span> that scales the work.
             </p>
             <p>
-              Currently pursuing an <strong>M.Tech in AI &amp; Data Science (Cybersecurity Specialization)</strong> at
-              National Forensic Sciences University, I work at the intersection of offensive security and machine learning.
+              At <strong>ABB's Cyber Defence Evaluation Centre (CDEC)</strong> I run end-to-end security assessments on
+              pre-production industrial hardware: <strong>10+ assessments</strong> across mobile, web, API, and embedded
+              targets, with protocol-level work on <strong>Modbus, IEC 61850 MMS, OPC UA, and DNP3</strong> — findings
+              scored with CVSS and mapped to IEC 62443-4-2, delivered with reproducible PoCs.
             </p>
             <p>
-              My experience spans VAPT assessments with reproducible PoCs to building AI-powered security tooling.
-              I believe the future of security operations is intelligent automation — and I'm building toward it.
+              The other half of my work is AI: a production RAG system at ABB, an OT attack simulator that turns plain
+              English into Modbus payloads, and a LangGraph SOC triage agent. I'm finishing an
+              <strong>M.Tech in AI &amp; Data Science (Cybersecurity)</strong> at NFSU, and I build where offensive
+              security and machine learning actually meet.
             </p>
           </div>
 
@@ -348,20 +350,29 @@
           <article class="bento-item bento-large project-card console-panel tilt-card reveal" data-panel-label="featured">
             <div class="project-chips">
               <span class="chip chip-alert">[AI-SEC]</span>
-              <span class="chip">[MITRE]</span>
+              <span class="chip">[SOC]</span>
             </div>
             <div class="project-icon-large">
               <i class="fas fa-shield-halved"></i>
             </div>
             <div class="project-content">
-              <h3 class="project-title">agentic_security_analyst/</h3>
+              <h3 class="project-title">soc_gpt/</h3>
               <p class="project-description">
-                AI-powered security analyst using LangChain tool-use to orchestrate vulnerability scans,
-                retrieve logs, and draft triage notes. Outputs aligned to the MITRE ATT&amp;CK framework for
-                standardized threat intelligence.
+                AI-augmented triage console. A LangGraph agent ingests Sigma rules, queries Elasticsearch for
+                matches against live logs, and synthesizes analyst-ready reports with MITRE ATT&amp;CK mapping,
+                false-positive scoring, and recommended SOC actions — all on a local LLM via Ollama.
               </p>
+              <div class="project-demo" aria-hidden="true">
+                <div class="demo-line"><span class="demo-prompt">$</span> <span class="demo-cmd">soc-gpt triage --rules sigma/ --index logs-*</span></div>
+                <div class="demo-line demo-out">[sigma] 214 detections loaded</div>
+                <div class="demo-line demo-out">[es] 3 matches across 4.2M events</div>
+                <div class="demo-line demo-ok">[+] alert mapped → ATT&amp;CK T1059.001, T1071</div>
+                <div class="demo-line demo-out">[llm] false-positive score: 0.08 (low)</div>
+                <div class="demo-line demo-out">[llm] triage report drafted → incident_042.md</div>
+                <div class="demo-line"><span class="demo-prompt">$</span> <span class="t-cursor"></span></div>
+              </div>
               <div class="project-tags">
-                <span>Python</span><span>LangChain</span><span>MITRE ATT&amp;CK</span><span>AI Security</span>
+                <span>LangGraph</span><span>Elasticsearch</span><span>pySigma</span><span>Ollama</span><span>MITRE ATT&amp;CK</span>
               </div>
             </div>
             <div class="project-links">
@@ -376,18 +387,21 @@
           <!-- Medium Project -->
           <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
             <div class="project-chips">
-              <span class="chip chip-alert">[NET-SEC]</span>
+              <span class="chip chip-alert">[OT-SEC]</span>
+              <span class="chip">[ICS]</span>
             </div>
             <div class="project-icon">
-              <i class="fas fa-network-wired"></i>
+              <i class="fas fa-industry"></i>
             </div>
-            <h3 class="project-title">ai_pcap_triage/</h3>
+            <h3 class="project-title">ot_attack_simulator/</h3>
             <p class="project-description">
-              Analyzes fuzzing-session PCAPs to surface suspicious sessions via timing gaps, TCP RST bursts, and entropy shifts.
+              Pure-Python Modbus TCP digital twin (PLC, SCADA, historian) with an LLM that turns
+              natural-language intent into protocol-accurate payloads, mapped to ATT&amp;CK for ICS.
             </p>
             <div class="project-tags">
-              <span>Scapy</span><span>Wireshark</span><span>ML</span>
+              <span>pymodbus</span><span>Scapy</span><span>LangChain</span><span>Azure OpenAI</span>
             </div>
+            <!-- ✏️ EDIT: link to the actual repo when public -->
             <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
             </a>
@@ -396,17 +410,51 @@
           <!-- Medium Project -->
           <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
             <div class="project-chips">
+              <span class="chip">[ICS]</span>
               <span class="chip">[GRC]</span>
             </div>
             <div class="project-icon">
-              <i class="fas fa-diagram-project"></i>
+              <i class="fas fa-magnifying-glass-chart"></i>
             </div>
-            <h3 class="project-title">graph_rag_assistant/</h3>
+            <h3 class="project-title">ics_cve_scanner/</h3>
             <p class="project-description">
-              Security knowledge retrieval with Neo4j graph &amp; vector DB, mapping to ISO 27001/NIST CSF controls.
+              Correlates an OT asset inventory against NVD CVEs and the CISA KEV catalogue, re-scores CVSS
+              by OT exposure, and generates IEC 62443-mapped remediation playbooks.
             </p>
             <div class="project-tags">
-              <span>Neo4j</span><span>FAISS</span><span>LangChain</span>
+              <span>NVD API</span><span>CISA KEV</span><span>Azure OpenAI</span><span>IEC 62443</span>
+            </div>
+            <!-- ✏️ EDIT: link to the actual repo when public -->
+            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
+              <i class="fab fa-github"></i>
+            </a>
+          </article>
+
+          <!-- Small Project -->
+          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
+            <div class="project-icon-small">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3 class="project-title-small">kabini_rag/</h3>
+            <p class="project-description-small">Production RAG at ABB — Milvus + LangGraph over 10k+ document chunks with RBAC.</p>
+            <div class="project-tags-small">
+              <span>Milvus</span><span>LangGraph</span>
+            </div>
+            <!-- ✏️ EDIT: production system — repo may stay private -->
+            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
+              <i class="fab fa-github"></i>
+            </a>
+          </article>
+
+          <!-- Small Project -->
+          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
+            <div class="project-icon-small">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3 class="project-title-small">ai_pcap_triage/</h3>
+            <p class="project-description-small">Flags crash-inducing payloads in fuzzing PCAPs via silence gaps, RST clusters, and entropy spikes.</p>
+            <div class="project-tags-small">
+              <span>Scapy</span><span>ML</span>
             </div>
             <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
@@ -416,41 +464,14 @@
           <!-- Small Project -->
           <article class="bento-item bento-small project-card console-panel tilt-card reveal">
             <div class="project-icon-small">
-              <i class="fas fa-robot"></i>
+              <i class="fas fa-camera"></i>
             </div>
-            <h3 class="project-title-small">llm_qna_assistant/</h3>
+            <h3 class="project-title-small">anpr_yolov8/</h3>
+            <p class="project-description-small">YOLOv8 + OCR licence-plate recognition for supply-chain checkpoints — 98% accuracy.</p>
             <div class="project-tags-small">
-              <span>LangChain</span><span>LLM</span>
+              <span>YOLOv8</span><span>OpenCV</span>
             </div>
-            <a href="https://github.com/kvmukilan/self-deployable-open-source-llm--qna-assistant-on-user-files-with-persistence" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
-            </a>
-          </article>
-
-          <!-- Small Project -->
-          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
-            <div class="project-icon-small">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h3 class="project-title-small">stock_lstm/</h3>
-            <div class="project-tags-small">
-              <span>Keras</span><span>Deep Learning</span>
-            </div>
-            <a href="https://github.com/kvmukilan/stock_prediction" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
-            </a>
-          </article>
-
-          <!-- Small Project -->
-          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
-            <div class="project-icon-small">
-              <i class="fas fa-microscope"></i>
-            </div>
-            <h3 class="project-title-small">hairline_cnn/</h3>
-            <div class="project-tags-small">
-              <span>U-Net</span><span>OpenCV</span>
-            </div>
-            <a href="https://github.com/kvmukilan/Hairline-Removal" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
+            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
             </a>
           </article>
@@ -460,16 +481,16 @@
             <div class="stats-grid">
               <!-- ✏️ EDIT: keep these numbers honest and current -->
               <div class="stat-item">
-                <span class="stat-value">12+</span>
-                <span class="stat-label">Vulns found</span>
+                <span class="stat-value">10+</span>
+                <span class="stat-label">VAPT assessments</span>
               </div>
               <div class="stat-item">
-                <span class="stat-value">3</span>
-                <span class="stat-label">VAPT reports</span>
+                <span class="stat-value">10k+</span>
+                <span class="stat-label">RAG doc chunks</span>
               </div>
               <div class="stat-item">
-                <span class="stat-value">6+</span>
-                <span class="stat-label">AI projects</span>
+                <span class="stat-value">4</span>
+                <span class="stat-label">OT protocols tested</span>
               </div>
               <div class="stat-item">
                 <span class="stat-value">98%</span>
@@ -492,117 +513,92 @@
         <div class="proof-grid">
           <div class="proof-column reveal">
             <h3 class="proof-subtitle"><i class="fas fa-certificate"></i> Certifications</h3>
-            <!-- ✏️ EDIT: replace with your real certifications (name, issuer, status/date) -->
             <div class="cert-list">
               <div class="cert-card console-panel">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-icon"><i class="fas fa-industry"></i></div>
                 <div class="cert-info">
-                  <span class="cert-name">CompTIA Security+</span>
-                  <span class="cert-issuer">CompTIA</span>
+                  <span class="cert-name">ISA/IEC 62443 Cybersecurity Fundamentals</span>
+                  <span class="cert-issuer">ISA</span>
                 </div>
                 <span class="chip chip-progress">in_progress</span>
               </div>
               <div class="cert-card console-panel">
                 <div class="cert-icon"><i class="fas fa-award"></i></div>
                 <div class="cert-info">
-                  <span class="cert-name">eJPT</span>
-                  <span class="cert-issuer">INE Security</span>
+                  <span class="cert-name">Azure AI Engineer Associate (AI-102)</span>
+                  <span class="cert-issuer">Microsoft</span>
                 </div>
-                <span class="chip chip-progress">planned</span>
+                <span class="chip chip-progress">in_progress</span>
               </div>
               <div class="cert-card console-panel">
                 <div class="cert-icon"><i class="fas fa-award"></i></div>
                 <div class="cert-info">
-                  <span class="cert-name">Your certification here</span>
-                  <span class="cert-issuer">Issuer</span>
+                  <span class="cert-name">LangChain for LLM App Development</span>
+                  <span class="cert-issuer">DeepLearning.AI</span>
                 </div>
                 <span class="chip chip-done">2025</span>
+              </div>
+              <div class="cert-card console-panel">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                  <span class="cert-name">Generative AI Fundamentals</span>
+                  <span class="cert-issuer">Databricks</span>
+                </div>
+                <span class="chip chip-done">2025</span>
+              </div>
+              <div class="cert-card console-panel">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                  <span class="cert-name">Generative AI Learning Path</span>
+                  <span class="cert-issuer">Google Cloud</span>
+                </div>
+                <span class="chip chip-done">2025</span>
+              </div>
+              <div class="cert-card console-panel">
+                <div class="cert-icon"><i class="fas fa-medal"></i></div>
+                <div class="cert-info">
+                  <span class="cert-name">Silver Medal — IIoT 4.0</span>
+                  <span class="cert-issuer">NPTEL</span>
+                </div>
+                <span class="chip chip-done">2022</span>
               </div>
             </div>
           </div>
 
           <div class="proof-column reveal">
-            <h3 class="proof-subtitle"><i class="fas fa-flag"></i> CTF &amp; labs</h3>
-            <!-- ✏️ EDIT: your real TryHackMe/HackTheBox/CTF stats + profile links -->
+            <h3 class="proof-subtitle"><i class="fas fa-crosshairs"></i> Hands-on offensive work</h3>
             <div class="ctf-grid">
-              <a href="https://tryhackme.com" target="_blank" rel="noopener" class="ctf-card console-panel">
-                <span class="ctf-platform">TryHackMe</span>
-                <span class="ctf-stat">Top N%</span>
-                <span class="ctf-detail">XX rooms completed</span>
-              </a>
-              <a href="https://hackthebox.com" target="_blank" rel="noopener" class="ctf-card console-panel">
-                <span class="ctf-platform">HackTheBox</span>
-                <span class="ctf-stat">Rank</span>
-                <span class="ctf-detail">XX boxes owned</span>
-              </a>
               <div class="ctf-card console-panel">
-                <span class="ctf-platform">CTF events</span>
-                <span class="ctf-stat">XX played</span>
-                <span class="ctf-detail">best placement: #XX</span>
+                <span class="ctf-platform">Live device VAPT</span>
+                <span class="ctf-stat">10+</span>
+                <span class="ctf-detail">pre-production industrial assessments</span>
               </div>
               <div class="ctf-card console-panel">
+                <span class="ctf-platform">OT protocols</span>
+                <span class="ctf-stat">Modbus · MMS</span>
+                <span class="ctf-detail">OPC UA · DNP3 on relays &amp; RTUs</span>
+              </div>
+              <div class="ctf-card console-panel">
+                <span class="ctf-platform">Mobile &amp; API</span>
+                <span class="ctf-stat">MASVS</span>
+                <span class="ctf-detail">Frida · MobSF · Burp · SSL-pinning bypass</span>
+              </div>
+              <a href="https://portswigger.net/web-security" target="_blank" rel="noopener" class="ctf-card console-panel">
                 <span class="ctf-platform">PortSwigger</span>
-                <span class="ctf-stat">XX labs</span>
+                <span class="ctf-stat">6 labs</span>
                 <span class="ctf-detail">Web Security Academy</span>
-              </div>
+              </a>
             </div>
+            <p class="proof-note">
+              Every finding shipped with a reproducible PoC, CVSS v3.1 score, and IEC 62443-4-2 mapping.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Writeups Section -->
-    <section id="writeups" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">./writeups</span>
-          <h2 class="section-title">Security writeups</h2>
-        </div>
-
-        <div class="writeups-grid">
-          <!-- ✏️ EDIT: link these to your real writeups / blog posts -->
-          <a href="#" class="writeup-card console-panel tilt-card reveal">
-            <span class="writeup-date">$ cat writeup_01.md</span>
-            <h3 class="writeup-title">Your first writeup title</h3>
-            <p class="writeup-excerpt">
-              One-line summary of what you broke, found, or built — e.g. "Chaining an IDOR with weak session
-              handling on a lab target."
-            </p>
-            <div class="writeup-tags">
-              <span>web</span><span>idor</span>
-            </div>
-            <span class="writeup-read">read →</span>
-          </a>
-
-          <a href="#" class="writeup-card console-panel tilt-card reveal">
-            <span class="writeup-date">$ cat writeup_02.md</span>
-            <h3 class="writeup-title">Your second writeup title</h3>
-            <p class="writeup-excerpt">
-              One-line summary — e.g. "Reversing an Android app's cert pinning with Frida in 30 minutes."
-            </p>
-            <div class="writeup-tags">
-              <span>android</span><span>frida</span>
-            </div>
-            <span class="writeup-read">read →</span>
-          </a>
-
-          <a href="#" class="writeup-card console-panel tilt-card reveal">
-            <span class="writeup-date">$ cat writeup_03.md</span>
-            <h3 class="writeup-title">Your third writeup title</h3>
-            <p class="writeup-excerpt">
-              One-line summary — e.g. "Building an LLM agent that triages PCAPs faster than I do."
-            </p>
-            <div class="writeup-tags">
-              <span>ai-sec</span><span>pcap</span>
-            </div>
-            <span class="writeup-read">read →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section-alt">
       <div class="container">
         <div class="contact-wrapper reveal">
           <div class="contact-content console-panel" data-panel-label="contact.sh">

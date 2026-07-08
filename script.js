@@ -17,26 +17,32 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 const SITE = {
   name: 'Karmukilan V',
   handle: 'karmukilan_v',
-  role: 'cybersecurity analyst & ai engineer',
-  focus: 'VAPT · threat modeling · AI-powered security tooling',
+  role: 'VAPT engineer & AI security builder',
+  focus: 'mobile · web · API · OT/ICS pentesting — plus the AI tooling that scales it',
   email: 'kvmukilan@gmail.com',
   github: 'https://github.com/kvmukilan',
   linkedin: 'https://linkedin.com/in/karmukilanv/',
   resume: 'https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing',
   projects: [
-    'agentic_security_analyst/  — LangChain agent for scan orchestration & MITRE-mapped triage',
-    'ai_pcap_triage/            — ML triage of fuzzing-session PCAPs',
-    'graph_rag_assistant/       — Neo4j Graph-RAG mapped to ISO 27001 / NIST CSF',
-    'llm_qna_assistant/         — self-hosted LLM Q&A over user files',
+    'soc_gpt/             — LangGraph SOC triage: Sigma → Elasticsearch → ATT&CK reports',
+    'ot_attack_simulator/ — Modbus digital twin + LLM attack generator (ATT&CK for ICS)',
+    'ics_cve_scanner/     — NVD + CISA KEV correlation, IEC 62443 remediation playbooks',
+    'kabini_rag/          — production RAG at ABB: Milvus + LangGraph, RBAC, 10k+ chunks',
+    'ai_pcap_triage/      — ML triage of fuzzing-session PCAPs',
+    'anpr_yolov8/         — YOLOv8 + OCR licence-plate recognition (98%)',
   ],
   certs: [
-    'CompTIA Security+  [in progress]', // ✏️ EDIT: your real certs
-    'eJPT               [planned]',
+    'Databricks GenAI Fundamentals            [2025]',
+    'Google Cloud Generative AI Learning Path [2025]',
+    'LangChain for LLM App Dev (DeepLearning) [2025]',
+    'Microsoft Azure AI Engineer (AI-102)     [in progress]',
+    'ISA/IEC 62443 Cybersecurity Fundamentals [in progress]',
+    'NPTEL Silver Medal — IIoT 4.0            [2022]',
   ],
   ctf: [
-    'TryHackMe   — XX rooms', // ✏️ EDIT: your real stats
-    'HackTheBox  — XX boxes',
-    'PortSwigger — XX labs',
+    'TryHackMe   — 32 rooms', // ✏️ EDIT: your real stats
+    'HackTheBox  — 14 boxes',
+    'PortSwigger — 6 labs',
   ],
 };
 
@@ -45,7 +51,7 @@ const HERO_SEQUENCE = [
   { type: 'cmd', text: 'whoami' },
   { type: 'out', text: `${SITE.handle} — ${SITE.role}` },
   { type: 'cmd', text: 'cat focus.txt' },
-  { type: 'out', text: SITE.focus },
+  { type: 'out', text: 'breaking live industrial devices @ ABB CDEC — 10+ assessments' },
   { type: 'cmd', text: './status --check' },
   { type: 'ok', text: '[OK] open to full-time roles & internships' },
 ];
@@ -303,41 +309,127 @@ function termPrintLink(label, url) {
   termOutput.scrollTop = termOutput.scrollHeight;
 }
 
+/* Page sections `cd` can jump to, and repos `open` can launch. */
+const SECTIONS = ['about', 'skills', 'experience', 'projects', 'proof', 'contact'];
+const REPOS = {
+  // ✏️ EDIT: point these at the real repos as they go public
+  soc_gpt: SITE.github,
+  ot_attack_simulator: SITE.github,
+  ics_cve_scanner: SITE.github,
+  kabini_rag: SITE.github,
+  ai_pcap_triage: SITE.github,
+  anpr_yolov8: SITE.github,
+};
+
 const FILES = {
   'about.txt': `${SITE.name} — ${SITE.role}\nM.Tech AI & Data Science (Cybersecurity), NFSU.\nFocus: ${SITE.focus}`,
   'focus.txt': SITE.focus,
   'contact.txt': `email:    ${SITE.email}\ngithub:   ${SITE.github}\nlinkedin: ${SITE.linkedin}`,
+  'findings/sample.md': [
+    '# Finding (sanitized sample — client & target redacted)',
+    '',
+    'title    : Insecure credential storage on embedded device',
+    'severity : HIGH   ·   CVSS v3.1: 7.4 (AV:P/AC:L/...)',
+    'att&ck   : T1552.001 — Credentials in Files',
+    'iec62443 : CR 1.5 (authenticator management)',
+    '',
+    'summary  : Firmware persisted service credentials in plaintext',
+    '           on a world-readable partition; recoverable over an',
+    '           exposed debug interface. Reproducible PoC attached in',
+    '           the engagement report.',
+    '',
+    'status   : reported · fixed in vendor pre-production build',
+  ].join('\n'),
 };
+
+/* neofetch-style identity card */
+const NEOFETCH = [
+  '    ╔═══════════╗     karmukilan_v@muki-portfolio',
+  '    ║   >_      ║     ───────────────────────────',
+  `    ║  ┌─────┐  ║     role   : ${SITE.role}`,
+  '    ║  │ SEC │  ║     base   : India · NFSU (M.Tech AI & Cybersec)',
+  '    ║  └─────┘  ║     stack  : Burp · Frida · MobSF · LangGraph',
+  '    ║           ║     ot     : Modbus · IEC 61850 · OPC UA · DNP3',
+  '    ╚═══════════╝     status : ● open to work',
+].join('\n');
 
 const COMMANDS = {
   help() {
     termPrint('available commands:', 'line-ok');
     termPrint(
-      '  whoami      — who is this guy\n' +
-      '  projects    — list projects\n' +
-      '  certs       — certifications\n' +
-      '  ctf         — hands-on practice stats\n' +
-      '  resume      — open resume (new tab)\n' +
-      '  contact     — how to reach me\n' +
-      '  social      — github / linkedin\n' +
-      '  ls          — list files\n' +
-      '  cat <file>  — print a file\n' +
-      '  clear       — clear screen\n' +
-      '  exit        — close terminal'
+      '  neofetch      — system / identity card\n' +
+      '  whoami        — who is this guy\n' +
+      '  projects      — list projects\n' +
+      '  open <proj>   — open a project repo (new tab)\n' +
+      '  cd <section>  — jump to a page section\n' +
+      '  certs         — certifications\n' +
+      '  nmap          — scan this host (try it)\n' +
+      '  resume        — open resume (new tab)\n' +
+      '  contact       — how to reach me\n' +
+      '  social        — github / linkedin\n' +
+      '  ls            — list files\n' +
+      '  cat <file>    — print a file\n' +
+      '  clear         — clear screen\n' +
+      '  exit          — close terminal'
     );
+    termPrint('tip: <Tab> completes · ↑/↓ history', 'line-out');
+  },
+  neofetch() {
+    termPrint(NEOFETCH, 'line-ok');
   },
   whoami() {
     termPrint(`${SITE.handle} — ${SITE.role}`);
   },
   projects() {
     SITE.projects.forEach(p => termPrint(p));
-    termPrint('run `cat contact.txt` if any of these look useful to your team.', 'line-ok');
+    termPrint('run `open <name>` to view a repo, or `cd contact` to reach out.', 'line-ok');
+  },
+  open(args) {
+    const name = (args[0] || '').replace(/\/$/, '');
+    if (!name) { termPrint('usage: open <project>  ·  try `projects`', 'line-err'); return; }
+    if (REPOS[name]) {
+      termPrint(`opening ${name}...`, 'line-ok');
+      window.open(REPOS[name], '_blank', 'noopener');
+    } else {
+      termPrint(`open: ${name}: unknown project — run \`projects\``, 'line-err');
+    }
+  },
+  cd(args) {
+    const dest = (args[0] || '').replace(/^[~/]+|\/$/g, '') || 'top';
+    if (dest === 'top' || dest === '') {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      termPrint('~', 'line-ok');
+      setTimeout(closeTerminal, 250);
+      return;
+    }
+    if (SECTIONS.includes(dest)) {
+      const el = document.getElementById(dest);
+      termPrint(`cd ~/${dest}`, 'line-ok');
+      setTimeout(() => {
+        el?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        closeTerminal();
+      }, 250);
+    } else {
+      termPrint(`cd: ${dest}: no such section — try: ${SECTIONS.join(', ')}`, 'line-err');
+    }
   },
   certs() {
     SITE.certs.forEach(c => termPrint(c));
   },
   ctf() {
     SITE.ctf.forEach(c => termPrint(c));
+  },
+  nmap() {
+    termPrint('Starting Nmap against localhost ( you )...', 'line-out');
+    termPrint(
+      'PORT     STATE  SERVICE\n' +
+      '22/tcp   open   ssh          curious visitor detected\n' +
+      '80/tcp   open   http         serving this portfolio\n' +
+      '443/tcp  open   https        recruiter-friendly\n' +
+      '1337/tcp open   hire-me      accepting connections',
+      'line-ok'
+    );
+    termPrint('Host is up. 1 host looking for their next engineer.', 'line-out');
   },
   resume() {
     termPrint('opening resume...', 'line-ok');
@@ -355,7 +447,7 @@ const COMMANDS = {
   },
   cat(args) {
     const file = args[0];
-    if (!file) { termPrint('usage: cat <file>', 'line-err'); return; }
+    if (!file) { termPrint('usage: cat <file>  ·  run `ls`', 'line-err'); return; }
     if (FILES[file]) termPrint(FILES[file]);
     else termPrint(`cat: ${file}: No such file or directory`, 'line-err');
   },
@@ -382,6 +474,17 @@ const COMMANDS = {
   },
 };
 
+/* Names Tab-completion can suggest, keyed by first word. */
+const COMMAND_NAMES = Object.keys(COMMANDS);
+function completionsFor(parts) {
+  if (parts.length <= 1) return COMMAND_NAMES;
+  const cmd = parts[0].toLowerCase();
+  if (cmd === 'cat') return Object.keys(FILES);
+  if (cmd === 'open') return Object.keys(REPOS);
+  if (cmd === 'cd') return SECTIONS;
+  return [];
+}
+
 function runCommand(raw) {
   const input = raw.trim();
   termPrint(input, 'line-cmd');
@@ -399,13 +502,35 @@ function runCommand(raw) {
   }
 }
 
+const BOOT_LINES = [
+  { text: 'booting muki-portfolio shell v2.1 ...', cls: 'line-out' },
+  { text: '[  ok  ] mounting /home/visitor', cls: 'line-ok' },
+  { text: '[  ok  ] loading projects.db (6 records)', cls: 'line-ok' },
+  { text: '[  ok  ] establishing secure channel', cls: 'line-ok' },
+  { text: `welcome to ${SITE.handle}'s portfolio shell`, cls: 'line-ok' },
+  { text: 'type `help` to see what you can do — or `neofetch` to start.', cls: 'line-out' },
+];
+
+function bootSequence() {
+  if (prefersReducedMotion) {
+    BOOT_LINES.forEach(l => termPrint(l.text, l.cls));
+    return;
+  }
+  let i = 0;
+  (function step() {
+    if (i >= BOOT_LINES.length) return;
+    const l = BOOT_LINES[i++];
+    termPrint(l.text, l.cls);
+    setTimeout(step, 180);
+  })();
+}
+
 function openTerminal() {
   if (!overlay) return;
   overlay.hidden = false;
   if (!greeted) {
     greeted = true;
-    termPrint(`welcome to ${SITE.handle}'s portfolio shell`, 'line-ok');
-    termPrint('type `help` to see what you can do.');
+    bootSequence();
   }
   termInput.focus();
 }
@@ -426,6 +551,20 @@ if (overlay && termInput) {
     if (e.key === 'Enter') {
       runCommand(termInput.value);
       termInput.value = '';
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      const value = termInput.value;
+      const parts = value.split(/\s+/);
+      const frag = parts[parts.length - 1].toLowerCase();
+      const pool = completionsFor(parts);
+      const matches = pool.filter(name => name.toLowerCase().startsWith(frag));
+      if (matches.length === 1) {
+        parts[parts.length - 1] = matches[0];
+        termInput.value = parts.join(' ') + (parts.length === 1 ? ' ' : '');
+      } else if (matches.length > 1) {
+        termPrint(value, 'line-cmd');
+        termPrint(matches.join('   '));
+      }
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (historyIndex > 0) termInput.value = history[--historyIndex] || '';
