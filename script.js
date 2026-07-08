@@ -24,12 +24,12 @@ const SITE = {
   linkedin: 'https://linkedin.com/in/karmukilanv/',
   resume: 'https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing',
   projects: [
+    'livewire/            — stateful TCP session replay, seq/ack-synced, pure Go',
     'soc_gpt/             — LangGraph SOC triage: Sigma → Elasticsearch → ATT&CK reports',
     'ot_attack_simulator/ — Modbus digital twin + LLM attack generator (ATT&CK for ICS)',
     'ics_cve_scanner/     — NVD + CISA KEV correlation, IEC 62443 remediation playbooks',
     'kabini_rag/          — production RAG at ABB: Milvus + LangGraph, RBAC, 10k+ chunks',
     'ai_pcap_triage/      — ML triage of fuzzing-session PCAPs',
-    'anpr_yolov8/         — YOLOv8 + OCR licence-plate recognition (98%)',
   ],
   certs: [
     'Databricks GenAI Fundamentals            [2025]',
@@ -312,13 +312,13 @@ function termPrintLink(label, url) {
 /* Page sections `cd` can jump to, and repos `open` can launch. */
 const SECTIONS = ['about', 'skills', 'experience', 'projects', 'proof', 'contact'];
 const REPOS = {
+  livewire: 'https://github.com/kvmukilan/livewire',
   soc_gpt: 'https://github.com/kvmukilan/soc-gpt',
   ot_attack_simulator: 'https://github.com/kvmukilan/ot-digital-twin',
   ics_cve_scanner: 'https://github.com/kvmukilan/ics-supply-chain-scanner',
   // ✏️ EDIT: no public repo yet — these fall back to the profile
   kabini_rag: SITE.github,
   ai_pcap_triage: SITE.github,
-  anpr_yolov8: SITE.github,
 };
 
 const FILES = {

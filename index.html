@@ -349,38 +349,60 @@
           <!-- Featured Project - Large -->
           <article class="bento-item bento-large project-card console-panel tilt-card reveal" data-panel-label="featured">
             <div class="project-chips">
-              <span class="chip chip-alert">[AI-SEC]</span>
-              <span class="chip">[SOC]</span>
+              <span class="chip chip-alert">[NET-SEC]</span>
+              <span class="chip">[TCP]</span>
             </div>
             <div class="project-icon-large">
-              <i class="fas fa-shield-halved"></i>
+              <i class="fas fa-tower-broadcast"></i>
             </div>
             <div class="project-content">
-              <h3 class="project-title">soc_gpt/</h3>
+              <h3 class="project-title">livewire/</h3>
               <p class="project-description">
-                AI-augmented triage console. A LangGraph agent ingests Sigma rules, queries Elasticsearch for
-                matches against live logs, and synthesizes analyst-ready reports with MITRE ATT&amp;CK mapping,
-                false-positive scoring, and recommended SOC actions — all on a local LLM via Ollama.
+                Stateful TCP session replay. Captures a session and re-runs it against a live host, keeping
+                sequence and ACK numbers in sync so the target treats it as a genuine peer — not a broken
+                replay. Cross-platform, pure Go, no libpcap dependency.
               </p>
               <div class="project-demo" aria-hidden="true">
-                <div class="demo-line"><span class="demo-prompt">$</span> <span class="demo-cmd">soc-gpt triage --rules sigma/ --index logs-*</span></div>
-                <div class="demo-line demo-out">[sigma] 214 detections loaded</div>
-                <div class="demo-line demo-out">[es] 3 matches across 4.2M events</div>
-                <div class="demo-line demo-ok">[+] alert mapped → ATT&amp;CK T1059.001, T1071</div>
-                <div class="demo-line demo-out">[llm] false-positive score: 0.08 (low)</div>
-                <div class="demo-line demo-out">[llm] triage report drafted → incident_042.md</div>
+                <div class="demo-line"><span class="demo-prompt">$</span> <span class="demo-cmd">livewire replay --pcap capture.pcap --target 10.0.0.5:502</span></div>
+                <div class="demo-line demo-out">[cap]  1,284 pkts · 3 tcp streams parsed</div>
+                <div class="demo-line demo-out">[sync] tracking seq/ack live — target sees a real peer</div>
+                <div class="demo-line demo-ok">[+] stream 1/3 replayed → 200 OK</div>
+                <div class="demo-line demo-ok">[+] stream 2/3 → modbus write fn16 accepted</div>
+                <div class="demo-line demo-out">[+] stream 3/3 → closed clean, no RST</div>
                 <div class="demo-line"><span class="demo-prompt">$</span> <span class="t-cursor"></span></div>
               </div>
               <div class="project-tags">
-                <span>LangGraph</span><span>Elasticsearch</span><span>pySigma</span><span>Ollama</span><span>MITRE ATT&amp;CK</span>
+                <span>Go</span><span>TCP/IP</span><span>PCAP</span><span>Network Security</span>
               </div>
             </div>
             <div class="project-links">
-              <a href="https://github.com/kvmukilan/soc-gpt" target="_blank" rel="noopener" class="project-link">
+              <a href="https://github.com/kvmukilan/livewire" target="_blank" rel="noopener" class="project-link">
                 <i class="fab fa-github"></i>
                 <span>source</span>
               </a>
             </div>
+          </article>
+
+          <!-- Medium Project -->
+          <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
+            <div class="project-chips">
+              <span class="chip chip-alert">[AI-SEC]</span>
+              <span class="chip">[SOC]</span>
+            </div>
+            <div class="project-icon">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <h3 class="project-title">soc_gpt/</h3>
+            <p class="project-description">
+              LangGraph triage agent: ingests Sigma rules, queries Elasticsearch for matches, and drafts
+              analyst-ready reports with ATT&amp;CK mapping and false-positive scoring — on a local LLM via Ollama.
+            </p>
+            <div class="project-tags">
+              <span>LangGraph</span><span>Elasticsearch</span><span>pySigma</span><span>Ollama</span>
+            </div>
+            <a href="https://github.com/kvmukilan/soc-gpt" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
+              <i class="fab fa-github"></i>
+            </a>
           </article>
 
           <!-- Medium Project -->
@@ -405,22 +427,15 @@
             </a>
           </article>
 
-          <!-- Medium Project -->
-          <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
-            <div class="project-chips">
-              <span class="chip">[ICS]</span>
-              <span class="chip">[GRC]</span>
-            </div>
-            <div class="project-icon">
+          <!-- Small Project -->
+          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
+            <div class="project-icon-small">
               <i class="fas fa-magnifying-glass-chart"></i>
             </div>
-            <h3 class="project-title">ics_cve_scanner/</h3>
-            <p class="project-description">
-              Correlates an OT asset inventory against NVD CVEs and the CISA KEV catalogue, re-scores CVSS
-              by OT exposure, and generates IEC 62443-mapped remediation playbooks.
-            </p>
-            <div class="project-tags">
-              <span>NVD API</span><span>CISA KEV</span><span>Azure OpenAI</span><span>IEC 62443</span>
+            <h3 class="project-title-small">ics_cve_scanner/</h3>
+            <p class="project-description-small">Correlates OT assets against NVD + CISA KEV, then drafts IEC 62443 remediation playbooks.</p>
+            <div class="project-tags-small">
+              <span>NVD API</span><span>IEC 62443</span>
             </div>
             <a href="https://github.com/kvmukilan/ics-supply-chain-scanner" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
               <i class="fab fa-github"></i>
@@ -458,21 +473,6 @@
             </a>
           </article>
 
-          <!-- Small Project -->
-          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
-            <div class="project-icon-small">
-              <i class="fas fa-camera"></i>
-            </div>
-            <h3 class="project-title-small">anpr_yolov8/</h3>
-            <p class="project-description-small">YOLOv8 + OCR licence-plate recognition for supply-chain checkpoints — 98% accuracy.</p>
-            <div class="project-tags-small">
-              <span>YOLOv8</span><span>OpenCV</span>
-            </div>
-            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
-            </a>
-          </article>
-
           <!-- Stats Card -->
           <article class="bento-item bento-stats console-panel reveal" data-panel-label="stats.json">
             <div class="stats-grid">
@@ -490,8 +490,8 @@
                 <span class="stat-label">OT protocols tested</span>
               </div>
               <div class="stat-item">
-                <span class="stat-value">98%</span>
-                <span class="stat-label">ANPR accuracy</span>
+                <span class="stat-value">6+</span>
+                <span class="stat-label">open-source tools</span>
               </div>
             </div>
           </article>
