@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Karmukilan V — Cybersecurity Analyst & AI Engineer. VAPT, threat modeling, and AI-powered security tooling.">
   <meta name="keywords" content="Cybersecurity, VAPT, Penetration Testing, AI Security, Machine Learning, Python, LangChain, NFSU">
-  <meta name="theme-color" content="#0a0f0d">
+  <meta name="theme-color" content="#141517">
 
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Karmukilan V | Cybersecurity & AI">
@@ -15,16 +15,13 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://muki-portfolio.vercel.app">
 
-  <!-- Favicon: terminal prompt glyph -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0f0d'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' fill='%2300e5a0'%3E%26gt;_%3C/text%3E%3C/svg%3E">
+  <!-- Favicon: terminal prompt glyph, amber on graphite -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23141517'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' fill='%23ffb000'%3E%26gt;_%3C/text%3E%3C/svg%3E">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Archivo (variable width) + Spline Sans Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&family=Spline+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -33,11 +30,6 @@
 </head>
 
 <body>
-  <!-- Background layers -->
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-scanlines" aria-hidden="true"></div>
-  <div class="bg-glow" aria-hidden="true"></div>
-
   <!-- Navbar -->
   <header class="navbar">
     <nav class="nav-container">
@@ -60,8 +52,7 @@
         </button>
         <!-- ✏️ EDIT: replace with your latest resume link -->
         <a href="https://drive.google.com/file/d/14yhv1semLOU-DD0yfy_IakYYBN3rKjk5/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary">
-          <span>resume.pdf</span>
-          <i class="fas fa-arrow-up-right-from-square"></i>
+          <span>resume.pdf</span><span class="ext-mark" aria-hidden="true">↗</span>
         </a>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
           <span class="hamburger"></span>
@@ -85,26 +76,28 @@
   <main>
     <!-- Hero Section -->
     <section id="hero" class="hero">
-      <div class="hero-content">
-        <div class="hero-badge animate-in">
-          <span class="status-dot"></span>
-          <span class="status-text">[STATUS: OPEN_TO_WORK]</span>
+      <div class="container">
+        <!-- man-page masthead -->
+        <div class="man-header animate-in" aria-hidden="true">
+          <span>KARMUKILAN(1)</span>
+          <span class="man-header-mid">User Commands</span>
+          <span>KARMUKILAN(1)</span>
         </div>
 
         <h1 class="hero-name animate-in delay-1">
           Karmukilan&nbsp;V<span class="accent-dot">.</span>
         </h1>
         <p class="hero-role animate-in delay-1">
-          VAPT Engineer <span class="role-sep">//</span> OT/ICS &amp; AI Security
+          VAPT engineer — OT/ICS &amp; AI security
+          <span class="hero-status"><span class="status-dot" aria-hidden="true"></span>open to work</span>
         </p>
 
         <!-- Hero terminal: typed sequence lives in script.js (HERO_SEQUENCE) -->
         <div class="hero-terminal console-window animate-in delay-2" aria-label="Terminal introduction">
           <div class="console-titlebar">
-            <span class="console-dot red"></span>
-            <span class="console-dot yellow"></span>
-            <span class="console-dot green"></span>
-            <span class="console-title">muki@sec:~</span>
+            <span class="console-session">[0]</span>
+            <span class="console-title">muki@sec:~ — bash</span>
+            <span class="console-meta">80×24</span>
           </div>
           <div class="console-body" id="hero-terminal-body">
             <noscript>
@@ -116,41 +109,34 @@
         <div class="hero-cta animate-in delay-3">
           <a href="#projects" class="btn btn-primary btn-large">
             <span>./view_projects</span>
-            <i class="fas fa-arrow-down"></i>
           </a>
           <a href="#contact" class="btn btn-ghost btn-large">
             <span>get in touch</span>
           </a>
         </div>
 
-        <div class="hero-social animate-in delay-4">
-          <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/karmukilanv/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="mailto:kvmukilan@gmail.com" class="social-link" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
+        <div class="hero-meta animate-in delay-4">
+          <div class="hero-social">
+            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="social-link">github<span class="ext-mark" aria-hidden="true">↗</span></a>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <a href="https://linkedin.com/in/karmukilanv/" target="_blank" rel="noopener" class="social-link">linkedin<span class="ext-mark" aria-hidden="true">↗</span></a>
+            <span class="meta-sep" aria-hidden="true">·</span>
+            <a href="mailto:kvmukilan@gmail.com" class="social-link">kvmukilan@gmail.com</a>
+          </div>
+          <p class="terminal-hint">
+            press <kbd>~</kbd> anywhere to open the terminal
+          </p>
         </div>
-
-        <p class="terminal-hint animate-in delay-4">
-          press <kbd>~</kbd> anywhere to open the terminal
-        </p>
       </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">~/about</span>
-          <h2 class="section-title">Who I am</h2>
-        </div>
+        <h2 class="section-title">Description</h2>
 
         <div class="about-grid">
-          <div class="about-content reveal">
+          <div class="about-content">
             <p class="about-lead">
               I'm a <span class="highlight">VAPT engineer</span> who breaks live industrial devices for a living —
               then builds the <span class="highlight">AI tooling</span> that scales the work.
@@ -169,423 +155,239 @@
             </p>
           </div>
 
-          <div class="about-visual reveal">
-            <div class="profile-card console-panel tilt-card" data-panel-label="id_card.png">
-              <div class="profile-image-wrapper">
-                <img src="profile.png" alt="Karmukilan V" class="profile-image">
-              </div>
-              <div class="profile-info">
-                <span class="profile-row"><span class="profile-key">name:</span> Karmukilan V</span>
-                <span class="profile-row"><span class="profile-key">base:</span> India</span>
-                <span class="profile-row"><span class="profile-key">edu:</span> NFSU · M.Tech</span>
-                <span class="profile-row"><span class="profile-key">focus:</span> VAPT · AI-Sec</span>
-              </div>
+          <figure class="profile-card">
+            <div class="profile-image-wrapper">
+              <img src="profile.png" alt="Karmukilan V" class="profile-image">
             </div>
-          </div>
+            <figcaption class="profile-info">
+              <span class="profile-row"><span class="profile-key">name</span>Karmukilan V</span>
+              <span class="profile-row"><span class="profile-key">base</span>India</span>
+              <span class="profile-row"><span class="profile-key">edu</span>NFSU · M.Tech</span>
+              <span class="profile-row"><span class="profile-key">focus</span>VAPT · AI-Sec</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- Skills Matrix -->
-    <section id="skills" class="section section-alt">
+    <!-- Skills -->
+    <section id="skills" class="section">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">~/skills</span>
-          <h2 class="section-title">Skills matrix</h2>
-        </div>
+        <h2 class="section-title">Capabilities</h2>
 
-        <div class="skills-grid">
-          <!-- ✏️ EDIT: tune skill tags in each category -->
-          <div class="skill-panel console-panel reveal" data-panel-label="offensive.cfg">
-            <div class="skill-panel-header">
-              <i class="fas fa-crosshairs"></i>
-              <h3>Offensive</h3>
-            </div>
-            <div class="stack-tags">
-              <span class="tag">Burp Suite</span>
-              <span class="tag">Nmap</span>
-              <span class="tag">MobSF</span>
-              <span class="tag">Frida</span>
-              <span class="tag">Fuzzing</span>
-              <span class="tag">Android VAPT</span>
-              <span class="tag">Web VAPT</span>
-            </div>
+        <!-- ✏️ EDIT: tune skill entries in each row -->
+        <dl class="skills-list">
+          <div class="skills-row">
+            <dt>offensive</dt>
+            <dd>Burp Suite · Nmap · MobSF · Frida · fuzzing · Android VAPT · Web VAPT</dd>
           </div>
-
-          <div class="skill-panel console-panel reveal" data-panel-label="defensive.cfg">
-            <div class="skill-panel-header">
-              <i class="fas fa-shield-halved"></i>
-              <h3>Defensive</h3>
-            </div>
-            <div class="stack-tags">
-              <span class="tag">Wireshark</span>
-              <span class="tag">Scapy</span>
-              <span class="tag">Threat Modeling</span>
-              <span class="tag">MITRE ATT&amp;CK</span>
-              <span class="tag">ISO 27001</span>
-              <span class="tag">NIST CSF</span>
-            </div>
+          <div class="skills-row">
+            <dt>defensive</dt>
+            <dd>Wireshark · Scapy · threat modeling · MITRE ATT&amp;CK · ISO 27001 · NIST CSF</dd>
           </div>
-
-          <div class="skill-panel console-panel reveal" data-panel-label="ai_sec.cfg">
-            <div class="skill-panel-header">
-              <i class="fas fa-brain"></i>
-              <h3>AI-Security</h3>
-            </div>
-            <div class="stack-tags">
-              <span class="tag">Python</span>
-              <span class="tag">LangChain</span>
-              <span class="tag">PyTorch</span>
-              <span class="tag">Neo4j</span>
-              <span class="tag">FAISS</span>
-              <span class="tag">Graph-RAG</span>
-              <span class="tag">YOLOv8</span>
-            </div>
+          <div class="skills-row">
+            <dt>ai-security</dt>
+            <dd>Python · LangChain · PyTorch · Neo4j · FAISS · Graph-RAG · YOLOv8</dd>
           </div>
-
-          <div class="skill-panel console-panel reveal" data-panel-label="tooling.cfg">
-            <div class="skill-panel-header">
-              <i class="fas fa-screwdriver-wrench"></i>
-              <h3>Tooling</h3>
-            </div>
-            <div class="stack-tags">
-              <span class="tag">Linux</span>
-              <span class="tag">Docker</span>
-              <span class="tag">Git</span>
-              <span class="tag">Azure</span>
-              <span class="tag">Bash</span>
-            </div>
+          <div class="skills-row">
+            <dt>tooling</dt>
+            <dd>Linux · Docker · Git · Azure · Bash</dd>
           </div>
-        </div>
+        </dl>
       </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="section">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">~/experience</span>
-          <h2 class="section-title">Where I've worked</h2>
-        </div>
+        <h2 class="section-title">History</h2>
 
-        <div class="experience-timeline">
-          <div class="timeline-line"></div>
-
-          <div class="experience-card reveal">
-            <div class="experience-dot current"></div>
-            <div class="experience-content console-panel tilt-card" data-panel-label="abb_2025.log">
-              <div class="experience-header">
-                <div class="experience-meta">
-                  <h3 class="experience-role">Cybersecurity &amp; AI Intern</h3>
-                  <span class="experience-company">ABB (CDEC – Electrification)</span>
-                </div>
-                <span class="experience-date">Jul 2025 → present</span>
+        <div class="experience-list">
+          <article class="experience-entry">
+            <div class="experience-header">
+              <div class="experience-meta">
+                <h3 class="experience-role">Cybersecurity &amp; AI Intern</h3>
+                <span class="experience-company">ABB · Cyber Defence Evaluation Centre (Electrification)</span>
               </div>
-              <ul class="experience-points">
-                <li>Authored <span class="metric">2 VAPT reports</span> (Android &amp; Web) with reproducible PoCs</li>
-                <li>Built <span class="metric">AI-assisted PCAP analyzer</span> for crash-inducing payload detection</li>
-                <li>Developed <span class="metric">Graph-RAG pipeline</span> with Neo4j + Azure OpenAI embeddings</li>
-              </ul>
-              <div class="experience-tags">
-                <span>Python</span><span>LangChain</span><span>Neo4j</span><span>Burp Suite</span><span>Wireshark</span>
-              </div>
+              <span class="experience-date">Jul 2025 → present</span>
             </div>
-          </div>
+            <ul class="experience-points">
+              <li>Authored <span class="metric">2 VAPT reports</span> (Android &amp; Web) with reproducible PoCs</li>
+              <li>Built <span class="metric">AI-assisted PCAP analyzer</span> for crash-inducing payload detection</li>
+              <li>Developed <span class="metric">Graph-RAG pipeline</span> with Neo4j + Azure OpenAI embeddings</li>
+            </ul>
+            <p class="experience-tags">Python · LangChain · Neo4j · Burp Suite · Wireshark</p>
+          </article>
 
-          <div class="experience-card reveal">
-            <div class="experience-dot"></div>
-            <div class="experience-content console-panel tilt-card" data-panel-label="cmo_2024.log">
-              <div class="experience-header">
-                <div class="experience-meta">
-                  <h3 class="experience-role">Cybersecurity &amp; AI Intern</h3>
-                  <span class="experience-company">CMO, Gujarat – AI Task Force</span>
-                </div>
-                <span class="experience-date">Oct 2024 → Dec 2024</span>
+          <article class="experience-entry">
+            <div class="experience-header">
+              <div class="experience-meta">
+                <h3 class="experience-role">Cybersecurity &amp; AI Intern</h3>
+                <span class="experience-company">CMO, Gujarat · AI Task Force</span>
               </div>
-              <ul class="experience-points">
-                <li>Built <span class="metric">ANPR system</span> using YOLOv8 + OCR for supply-chain verification</li>
-                <li>Implemented <span class="metric">blockchain-style ledgers</span> for manifest integrity</li>
-                <li>Threat-modeled pipeline with <span class="metric">ML-based tamper detection</span></li>
-              </ul>
-              <div class="experience-tags">
-                <span>YOLOv8</span><span>OpenCV</span><span>Scikit-learn</span><span>Python</span>
-              </div>
+              <span class="experience-date">Oct 2024 → Dec 2024</span>
             </div>
-          </div>
+            <ul class="experience-points">
+              <li>Built <span class="metric">ANPR system</span> using YOLOv8 + OCR for supply-chain verification</li>
+              <li>Implemented <span class="metric">blockchain-style ledgers</span> for manifest integrity</li>
+              <li>Threat-modeled pipeline with <span class="metric">ML-based tamper detection</span></li>
+            </ul>
+            <p class="experience-tags">YOLOv8 · OpenCV · Scikit-learn · Python</p>
+          </article>
 
-          <div class="experience-card reveal">
-            <div class="experience-dot"></div>
-            <div class="experience-content console-panel tilt-card" data-panel-label="hp_2023.log">
-              <div class="experience-header">
-                <div class="experience-meta">
-                  <h3 class="experience-role">AI Intern</h3>
-                  <span class="experience-company">HP</span>
-                </div>
-                <span class="experience-date">Jun 2023 → Aug 2023</span>
+          <article class="experience-entry">
+            <div class="experience-header">
+              <div class="experience-meta">
+                <h3 class="experience-role">AI Intern</h3>
+                <span class="experience-company">HP</span>
               </div>
-              <ul class="experience-points">
-                <li>Built onboarding chatbot using <span class="metric">LangChain</span> for company documents</li>
-                <li>Developed financial analysis chatbot for <span class="metric">Excel data querying</span></li>
-                <li>Focused on <span class="metric">privacy-first</span> open-source solutions</li>
-              </ul>
-              <div class="experience-tags">
-                <span>LangChain</span><span>Streamlit</span><span>NLP</span><span>Python</span>
-              </div>
+              <span class="experience-date">Jun 2023 → Aug 2023</span>
             </div>
-          </div>
+            <ul class="experience-points">
+              <li>Built onboarding chatbot using <span class="metric">LangChain</span> for company documents</li>
+              <li>Developed financial analysis chatbot for <span class="metric">Excel data querying</span></li>
+              <li>Focused on <span class="metric">privacy-first</span> open-source solutions</li>
+            </ul>
+            <p class="experience-tags">LangChain · Streamlit · NLP · Python</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section - Bento Grid -->
-    <section id="projects" class="section section-alt">
+    <!-- Projects Section -->
+    <section id="projects" class="section">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">./projects</span>
-          <h2 class="section-title">What I've built</h2>
-        </div>
+        <h2 class="section-title">Examples</h2>
 
-        <div class="bento-grid">
-          <!-- Featured Project - Large -->
-          <article class="bento-item bento-large project-card console-panel tilt-card reveal" data-panel-label="featured">
-            <div class="project-chips">
-              <span class="chip chip-alert">[NET-SEC]</span>
-              <span class="chip">[TCP]</span>
-            </div>
-            <div class="project-icon-large">
-              <i class="fas fa-tower-broadcast"></i>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">livewire/</h3>
-              <p class="project-description">
-                Stateful TCP session replay. Captures a session and re-runs it against a live host, keeping
-                sequence and ACK numbers in sync so the target treats it as a genuine peer — not a broken
-                replay. Cross-platform, pure Go, no libpcap dependency.
-              </p>
-              <div class="project-demo" aria-hidden="true">
-                <div class="demo-line"><span class="demo-prompt">$</span> <span class="demo-cmd">livewire replay --pcap capture.pcap --target 10.0.0.5:502</span></div>
-                <div class="demo-line demo-out">[cap]  1,284 pkts · 3 tcp streams parsed</div>
-                <div class="demo-line demo-out">[sync] tracking seq/ack live — target sees a real peer</div>
-                <div class="demo-line demo-ok">[+] stream 1/3 replayed → 200 OK</div>
-                <div class="demo-line demo-ok">[+] stream 2/3 → modbus write fn16 accepted</div>
-                <div class="demo-line demo-out">[+] stream 3/3 → closed clean, no RST</div>
-                <div class="demo-line"><span class="demo-prompt">$</span> <span class="t-cursor"></span></div>
-              </div>
-              <div class="project-tags">
-                <span>Go</span><span>TCP/IP</span><span>PCAP</span><span>Network Security</span>
-              </div>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/kvmukilan/livewire" target="_blank" rel="noopener" class="project-link">
-                <i class="fab fa-github"></i>
-                <span>source</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- Medium Project -->
-          <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
-            <div class="project-chips">
-              <span class="chip chip-alert">[AI-SEC]</span>
-              <span class="chip">[SOC]</span>
-            </div>
-            <div class="project-icon">
-              <i class="fas fa-shield-halved"></i>
-            </div>
-            <h3 class="project-title">soc_gpt/</h3>
+        <!-- Featured project -->
+        <article class="project-featured">
+          <div class="project-featured-info">
+            <p class="project-kind">net-sec / tcp — featured</p>
+            <h3 class="project-title">livewire/</h3>
             <p class="project-description">
-              LangGraph triage agent: ingests Sigma rules, queries Elasticsearch for matches, and drafts
-              analyst-ready reports with ATT&amp;CK mapping and false-positive scoring — on a local LLM via Ollama.
+              Stateful TCP session replay. Captures a session and re-runs it against a live host, keeping
+              sequence and ACK numbers in sync so the target treats it as a genuine peer — not a broken
+              replay. Cross-platform, pure Go, no libpcap dependency.
             </p>
-            <div class="project-tags">
-              <span>LangGraph</span><span>Elasticsearch</span><span>pySigma</span><span>Ollama</span>
-            </div>
-            <a href="https://github.com/kvmukilan/soc-gpt" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
+            <p class="project-stack">Go · TCP/IP · PCAP · network security</p>
+            <a href="https://github.com/kvmukilan/livewire" target="_blank" rel="noopener" class="project-link">
+              view source<span class="ext-mark" aria-hidden="true">↗</span>
             </a>
-          </article>
+          </div>
+          <div class="project-demo" aria-hidden="true">
+            <div class="demo-line"><span class="demo-prompt">$</span> <span class="demo-cmd">livewire replay --pcap capture.pcap --target 10.0.0.5:502</span></div>
+            <div class="demo-line demo-out">[cap]  1,284 pkts · 3 tcp streams parsed</div>
+            <div class="demo-line demo-out">[sync] tracking seq/ack live — target sees a real peer</div>
+            <div class="demo-line demo-ok">[+] stream 1/3 replayed → 200 OK</div>
+            <div class="demo-line demo-ok">[+] stream 2/3 → modbus write fn16 accepted</div>
+            <div class="demo-line demo-out">[+] stream 3/3 → closed clean, no RST</div>
+            <div class="demo-line"><span class="demo-prompt">$</span> <span class="t-cursor"></span></div>
+          </div>
+        </article>
 
-          <!-- Medium Project -->
-          <article class="bento-item bento-medium project-card console-panel tilt-card reveal">
-            <div class="project-chips">
-              <span class="chip chip-alert">[OT-SEC]</span>
-              <span class="chip">[ICS]</span>
-            </div>
-            <div class="project-icon">
-              <i class="fas fa-industry"></i>
-            </div>
-            <h3 class="project-title">ot_attack_simulator/</h3>
-            <p class="project-description">
-              Pure-Python Modbus TCP digital twin (PLC, SCADA, historian) with an LLM that turns
-              natural-language intent into protocol-accurate payloads, mapped to ATT&amp;CK for ICS.
-            </p>
-            <div class="project-tags">
-              <span>pymodbus</span><span>Scapy</span><span>LangChain</span><span>Azure OpenAI</span>
-            </div>
-            <a href="https://github.com/kvmukilan/ot-digital-twin" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
-            </a>
-          </article>
+        <!-- Project index -->
+        <div class="project-index">
+          <a href="https://github.com/kvmukilan/soc-gpt" target="_blank" rel="noopener" class="project-row">
+            <span class="project-row-name">soc_gpt/</span>
+            <span class="project-row-desc">LangGraph triage agent: Sigma rules → Elasticsearch → analyst-ready reports with ATT&amp;CK mapping and false-positive scoring, on a local LLM via Ollama.</span>
+            <span class="project-row-stack">LangGraph · Elasticsearch · pySigma · Ollama</span>
+            <span class="project-row-link" aria-hidden="true">↗</span>
+          </a>
 
-          <!-- Small Project -->
-          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
-            <div class="project-icon-small">
-              <i class="fas fa-magnifying-glass-chart"></i>
-            </div>
-            <h3 class="project-title-small">ics_cve_scanner/</h3>
-            <p class="project-description-small">Correlates OT assets against NVD + CISA KEV, then drafts IEC 62443 remediation playbooks.</p>
-            <div class="project-tags-small">
-              <span>NVD API</span><span>IEC 62443</span>
-            </div>
-            <a href="https://github.com/kvmukilan/ics-supply-chain-scanner" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
-            </a>
-          </article>
+          <a href="https://github.com/kvmukilan/ot-digital-twin" target="_blank" rel="noopener" class="project-row">
+            <span class="project-row-name">ot_attack_simulator/</span>
+            <span class="project-row-desc">Pure-Python Modbus TCP digital twin (PLC, SCADA, historian) with an LLM that turns natural-language intent into protocol-accurate payloads, mapped to ATT&amp;CK for ICS.</span>
+            <span class="project-row-stack">pymodbus · Scapy · LangChain · Azure OpenAI</span>
+            <span class="project-row-link" aria-hidden="true">↗</span>
+          </a>
 
-          <!-- Small Project -->
-          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
-            <div class="project-icon-small">
-              <i class="fas fa-database"></i>
-            </div>
-            <h3 class="project-title-small">kabini_rag/</h3>
-            <p class="project-description-small">Production RAG at ABB — Milvus + LangGraph over 10k+ document chunks with RBAC.</p>
-            <div class="project-tags-small">
-              <span>Milvus</span><span>LangGraph</span>
-            </div>
-            <!-- ✏️ EDIT: production system — repo may stay private -->
-            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
-            </a>
-          </article>
+          <a href="https://github.com/kvmukilan/ics-supply-chain-scanner" target="_blank" rel="noopener" class="project-row">
+            <span class="project-row-name">ics_cve_scanner/</span>
+            <span class="project-row-desc">Correlates OT assets against NVD + CISA KEV, then drafts IEC 62443 remediation playbooks.</span>
+            <span class="project-row-stack">NVD API · IEC 62443</span>
+            <span class="project-row-link" aria-hidden="true">↗</span>
+          </a>
 
-          <!-- Small Project -->
-          <article class="bento-item bento-small project-card console-panel tilt-card reveal">
-            <div class="project-icon-small">
-              <i class="fas fa-network-wired"></i>
-            </div>
-            <h3 class="project-title-small">ai_pcap_triage/</h3>
-            <p class="project-description-small">Flags crash-inducing payloads in fuzzing PCAPs via silence gaps, RST clusters, and entropy spikes.</p>
-            <div class="project-tags-small">
-              <span>Scapy</span><span>ML</span>
-            </div>
-            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub repo">
-              <i class="fab fa-github"></i>
-            </a>
-          </article>
+          <!-- ✏️ EDIT: production system — repo may stay private -->
+          <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-row">
+            <span class="project-row-name">kabini_rag/</span>
+            <span class="project-row-desc">Production RAG at ABB — Milvus + LangGraph over 10k+ document chunks with RBAC.</span>
+            <span class="project-row-stack">Milvus · LangGraph</span>
+            <span class="project-row-link" aria-hidden="true">↗</span>
+          </a>
 
-          <!-- Stats Card -->
-          <article class="bento-item bento-stats console-panel reveal" data-panel-label="stats.json">
-            <div class="stats-grid">
-              <!-- ✏️ EDIT: keep these numbers honest and current -->
-              <div class="stat-item">
-                <span class="stat-value">10+</span>
-                <span class="stat-label">VAPT assessments</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value">10k+</span>
-                <span class="stat-label">RAG doc chunks</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value">4</span>
-                <span class="stat-label">OT protocols tested</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value">6+</span>
-                <span class="stat-label">open-source tools</span>
-              </div>
-            </div>
-          </article>
+          <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="project-row">
+            <span class="project-row-name">ai_pcap_triage/</span>
+            <span class="project-row-desc">Flags crash-inducing payloads in fuzzing PCAPs via silence gaps, RST clusters, and entropy spikes.</span>
+            <span class="project-row-stack">Scapy · ML</span>
+            <span class="project-row-link" aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Proof of Skill: Certifications + CTF -->
+    <!-- Proof of Skill: Certifications + hands-on practice -->
     <section id="proof" class="section">
       <div class="container">
-        <div class="section-header">
-          <span class="section-label">~/proof-of-skill</span>
-          <h2 class="section-title">Certs &amp; hands-on practice</h2>
-        </div>
+        <h2 class="section-title">Certifications &amp; Practice</h2>
 
         <div class="proof-grid">
-          <div class="proof-column reveal">
-            <h3 class="proof-subtitle"><i class="fas fa-certificate"></i> Certifications</h3>
-            <div class="cert-list">
-              <div class="cert-card console-panel">
-                <div class="cert-icon"><i class="fas fa-industry"></i></div>
-                <div class="cert-info">
-                  <span class="cert-name">ISA/IEC 62443 Cybersecurity Fundamentals</span>
-                  <span class="cert-issuer">ISA</span>
-                </div>
-                <span class="chip chip-progress">in_progress</span>
-              </div>
-              <div class="cert-card console-panel">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div class="cert-info">
-                  <span class="cert-name">Azure AI Engineer Associate (AI-102)</span>
-                  <span class="cert-issuer">Microsoft</span>
-                </div>
-                <span class="chip chip-progress">in_progress</span>
-              </div>
-              <div class="cert-card console-panel">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div class="cert-info">
-                  <span class="cert-name">LangChain for LLM App Development</span>
-                  <span class="cert-issuer">DeepLearning.AI</span>
-                </div>
-                <span class="chip chip-done">2025</span>
-              </div>
-              <div class="cert-card console-panel">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div class="cert-info">
-                  <span class="cert-name">Generative AI Fundamentals</span>
-                  <span class="cert-issuer">Databricks</span>
-                </div>
-                <span class="chip chip-done">2025</span>
-              </div>
-              <div class="cert-card console-panel">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div class="cert-info">
-                  <span class="cert-name">Generative AI Learning Path</span>
-                  <span class="cert-issuer">Google Cloud</span>
-                </div>
-                <span class="chip chip-done">2025</span>
-              </div>
-              <div class="cert-card console-panel">
-                <div class="cert-icon"><i class="fas fa-medal"></i></div>
-                <div class="cert-info">
-                  <span class="cert-name">Silver Medal — IIoT 4.0</span>
-                  <span class="cert-issuer">NPTEL</span>
-                </div>
-                <span class="chip chip-done">2022</span>
-              </div>
-            </div>
+          <div class="proof-column">
+            <h3 class="proof-subtitle">certifications</h3>
+            <ul class="cert-list">
+              <li class="cert-row">
+                <span class="cert-name">ISA/IEC 62443 Cybersecurity Fundamentals</span>
+                <span class="cert-issuer">ISA</span>
+                <span class="cert-year cert-progress">in&nbsp;progress</span>
+              </li>
+              <li class="cert-row">
+                <span class="cert-name">Azure AI Engineer Associate (AI-102)</span>
+                <span class="cert-issuer">Microsoft</span>
+                <span class="cert-year cert-progress">in&nbsp;progress</span>
+              </li>
+              <li class="cert-row">
+                <span class="cert-name">LangChain for LLM App Development</span>
+                <span class="cert-issuer">DeepLearning.AI</span>
+                <span class="cert-year">2025</span>
+              </li>
+              <li class="cert-row">
+                <span class="cert-name">Generative AI Fundamentals</span>
+                <span class="cert-issuer">Databricks</span>
+                <span class="cert-year">2025</span>
+              </li>
+              <li class="cert-row">
+                <span class="cert-name">Generative AI Learning Path</span>
+                <span class="cert-issuer">Google Cloud</span>
+                <span class="cert-year">2025</span>
+              </li>
+              <li class="cert-row">
+                <span class="cert-name">Silver Medal — IIoT 4.0</span>
+                <span class="cert-issuer">NPTEL</span>
+                <span class="cert-year">2022</span>
+              </li>
+            </ul>
           </div>
 
-          <div class="proof-column reveal">
-            <h3 class="proof-subtitle"><i class="fas fa-crosshairs"></i> Hands-on offensive work</h3>
-            <div class="ctf-grid">
-              <div class="ctf-card console-panel">
-                <span class="ctf-platform">Live device VAPT</span>
-                <span class="ctf-stat">10+</span>
-                <span class="ctf-detail">pre-production industrial assessments</span>
-              </div>
-              <div class="ctf-card console-panel">
-                <span class="ctf-platform">OT protocols</span>
-                <span class="ctf-stat">Modbus · MMS</span>
-                <span class="ctf-detail">OPC UA · DNP3 on relays &amp; RTUs</span>
-              </div>
-              <div class="ctf-card console-panel">
-                <span class="ctf-platform">Mobile &amp; API</span>
-                <span class="ctf-stat">MASVS</span>
-                <span class="ctf-detail">Frida · MobSF · Burp · SSL-pinning bypass</span>
-              </div>
-              <a href="https://portswigger.net/web-security" target="_blank" rel="noopener" class="ctf-card console-panel">
-                <span class="ctf-platform">PortSwigger</span>
-                <span class="ctf-stat">6 labs</span>
-                <span class="ctf-detail">Web Security Academy</span>
-              </a>
-            </div>
+          <div class="proof-column">
+            <h3 class="proof-subtitle">hands-on offensive work</h3>
+            <ul class="practice-list">
+              <li class="practice-row">
+                <span class="practice-stat">10+</span>
+                <span class="practice-detail"><strong>Live device VAPT</strong> — pre-production industrial assessments</span>
+              </li>
+              <li class="practice-row">
+                <span class="practice-stat">4 protocols</span>
+                <span class="practice-detail"><strong>OT deep-dives</strong> — Modbus · IEC 61850 MMS · OPC UA · DNP3 on relays &amp; RTUs</span>
+              </li>
+              <li class="practice-row">
+                <span class="practice-stat">MASVS</span>
+                <span class="practice-detail"><strong>Mobile &amp; API</strong> — Frida · MobSF · Burp · SSL-pinning bypass</span>
+              </li>
+              <li class="practice-row">
+                <span class="practice-stat">6 labs</span>
+                <span class="practice-detail"><strong><a href="https://portswigger.net/web-security" target="_blank" rel="noopener">PortSwigger<span class="ext-mark" aria-hidden="true">↗</span></a></strong> — Web Security Academy</span>
+              </li>
+            </ul>
             <p class="proof-note">
               Every finding shipped with a reproducible PoC, CVSS v3.1 score, and IEC 62443-4-2 mapping.
             </p>
@@ -595,32 +397,22 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
+    <section id="contact" class="section">
       <div class="container">
-        <div class="contact-wrapper reveal">
-          <div class="contact-content console-panel" data-panel-label="contact.sh">
-            <span class="section-label">~/contact</span>
-            <h2 class="contact-title">Let's work together</h2>
-            <p class="contact-description">
-              I'm currently open to opportunities in cybersecurity and AI —
-              full-time roles, internships, or collaboration.
-            </p>
+        <div class="contact-content">
+          <h2 class="section-title">See Also</h2>
+          <p class="contact-description">
+            I'm currently open to opportunities in cybersecurity and AI —
+            full-time roles, internships, or collaboration.
+          </p>
 
-            <a href="mailto:kvmukilan@gmail.com" class="btn btn-primary btn-large contact-btn">
-              <i class="fas fa-paper-plane"></i>
-              <span>send_mail --to kvmukilan@gmail.com</span>
-            </a>
+          <a href="mailto:kvmukilan@gmail.com" class="btn btn-primary btn-large contact-btn">
+            <span>send_mail --to kvmukilan@gmail.com</span>
+          </a>
 
-            <div class="contact-links">
-              <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="contact-link">
-                <i class="fab fa-github"></i>
-                <span>github/kvmukilan</span>
-              </a>
-              <a href="https://linkedin.com/in/karmukilanv/" target="_blank" rel="noopener" class="contact-link">
-                <i class="fab fa-linkedin-in"></i>
-                <span>in/karmukilanv</span>
-              </a>
-            </div>
+          <div class="contact-links">
+            <a href="https://github.com/kvmukilan" target="_blank" rel="noopener" class="contact-link">github/kvmukilan<span class="ext-mark" aria-hidden="true">↗</span></a>
+            <a href="https://linkedin.com/in/karmukilanv/" target="_blank" rel="noopener" class="contact-link">in/karmukilanv<span class="ext-mark" aria-hidden="true">↗</span></a>
           </div>
         </div>
       </div>
@@ -641,10 +433,8 @@
   <div class="terminal-overlay" id="terminal-overlay" role="dialog" aria-modal="true" aria-label="Interactive terminal" hidden>
     <div class="terminal-window console-window">
       <div class="console-titlebar">
-        <span class="console-dot red"></span>
-        <span class="console-dot yellow"></span>
-        <span class="console-dot green"></span>
-        <span class="console-title">visitor@muki-portfolio:~</span>
+        <span class="console-session">[0]</span>
+        <span class="console-title">visitor@muki-portfolio:~ — bash</span>
         <button class="terminal-close" id="terminal-close" aria-label="Close terminal">✕</button>
       </div>
       <div class="terminal-output" id="terminal-output"></div>

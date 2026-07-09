@@ -4,8 +4,6 @@
    scroll effects. No dependencies.
    ======================================== */
 
-document.documentElement.classList.add('js');
-
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ========================================
@@ -196,85 +194,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ========================================
-   5. Reveal on scroll
-   ======================================== */
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ========================================
-   6. Subtle 3D tilt (throttled)
-   ======================================== */
-
-if (!prefersReducedMotion) {
-  document.querySelectorAll('.tilt-card').forEach(card => {
-    let rafId = null;
-
-    card.addEventListener('mouseenter', () => {
-      card.style.transition = 'none';
-    });
-
-    card.addEventListener('mousemove', (e) => {
-      if (rafId) return;
-      rafId = requestAnimationFrame(() => {
-        const rect = card.getBoundingClientRect();
-        const rotateX = (e.clientY - rect.top - rect.height / 2) / 45;
-        const rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 45;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        rafId = null;
-      });
-    });
-
-    card.addEventListener('mouseleave', () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      rafId = null;
-      card.style.transition = 'transform 0.3s ease';
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-    });
-  });
-}
-
-/* ========================================
-   7. Counter animation
-   ======================================== */
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const value = el.textContent;
-      if (/^\d+/.test(value) && !prefersReducedMotion) {
-        const num = parseInt(value);
-        const suffix = value.replace(/[\d]/g, '');
-        let current = 0;
-        const increment = num / 20;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= num) {
-            el.textContent = num + suffix;
-            clearInterval(timer);
-          } else {
-            el.textContent = Math.floor(current) + suffix;
-          }
-        }, 40);
-      }
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.stat-value').forEach(stat => counterObserver.observe(stat));
-
-/* ========================================
-   8. Interactive terminal
+   5. Interactive terminal
    ======================================== */
 
 const overlay = document.getElementById('terminal-overlay');
@@ -598,17 +518,17 @@ if (overlay && termInput) {
 }
 
 /* ========================================
-   9. Devtools easter egg
+   6. Devtools easter egg
    ======================================== */
 
 console.log(
   '%c>_ hello, fellow inspector',
-  'color:#00e5a0; font-family:monospace; font-size:16px; font-weight:bold;'
+  'color:#ffb000; font-family:monospace; font-size:16px; font-weight:bold;'
 );
 console.log(
   `%cIf you're reading this, you're my kind of person.\n` +
   `mail:   ${SITE.email}\n` +
   `github: ${SITE.github}\n` +
   `tip: press ~ on the page for the terminal.`,
-  'color:#8aa39a; font-family:monospace; font-size:12px;'
+  'color:#b7bcba; font-family:monospace; font-size:12px;'
 );
