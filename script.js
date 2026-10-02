@@ -15,7 +15,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 const SITE = {
   name: 'Karmukilan V',
   handle: 'karmukilan_v',
-  role: 'VAPT engineer & AI security builder',
+  role: 'OT/ICS security engineer — VAPT & AI security',
   focus: 'mobile · web · API · OT/ICS pentesting — plus the AI tooling that scales it',
   email: 'kvmukilan@gmail.com',
   github: 'https://github.com/kvmukilan',
@@ -51,7 +51,7 @@ const HERO_SEQUENCE = [
   { type: 'cmd', text: 'cat focus.txt' },
   { type: 'out', text: 'breaking live industrial devices @ ABB CDEC — 10+ assessments' },
   { type: 'cmd', text: './status --check' },
-  { type: 'ok', text: '[OK] open to full-time roles & internships' },
+  { type: 'ok', text: '[OK] open to full-time roles & collaboration' },
 ];
 
 /* ========================================
