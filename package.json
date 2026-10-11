@@ -6,7 +6,8 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build.mjs",
+    "test": "node --check script.js && python3 scripts/check-site.py"
   },
   "author": "Karmukilan V",
   "license": "ISC"
