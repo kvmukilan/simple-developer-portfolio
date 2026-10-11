@@ -47,3 +47,7 @@ profile.png  — profile photo
 ## Deploy
 
 Static site — deploys as-is on Vercel / GitHub Pages / Netlify.
+
+## Deployment readiness
+
+See [deployment setup, checks, and rollback](docs/production.md).
